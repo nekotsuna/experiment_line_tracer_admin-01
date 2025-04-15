@@ -115,25 +115,27 @@ int motor_drive(int pd, int fd, int lm, int rm)
 // -----------------------------
 // 初期化処理（pigpiod接続とPWM初期化）
 // -----------------------------
-void initialize_pwm_unit(int *pd, int *fd)
+void main()
 {
-    *pd = pigpio_start(NULL, NULL);
-    if (*pd < 0) {
+    int pd, fd;
+    pd = pigpio_start(NULL, NULL);
+    if (pd < 0) {
         printf("pigpiod の接続に失敗しました。\n");
         printf("pigpiod が起動しているか確認してください。\n");
         exit(EXIT_FAILURE);
     }
 
-    *fd = i2c_open(*pd, PWMI2CCH, PWMI2CADR, 0);
-    if (*fd < 0) {
+    fd = i2c_open(pd, PWMI2CCH, PWMI2CADR, 0);
+    if (fd < 0) {
         printf("I2C の初期化に失敗しました。終了します。\n");
+	printf("fd: %d\n", fd);
         exit(EXIT_FAILURE);
     }
 
     // PWM ユニットの初期設定
-    i2c_write_byte_data(*pd, *fd, PWM_PRESCALE, 61);     // 周期10msに設定
-    i2c_write_byte_data(*pd, *fd, PWM_MODE1, 0x10);       // SLEEPモード
-    i2c_write_byte_data(*pd, *fd, PWM_MODE1, 0);          // 通常モード
+    i2c_write_byte_data(pd, fd, PWM_PRESCALE, 61);     // 周期10msに設定
+    i2c_write_byte_data(pd, fd, PWM_MODE1, 0x10);       // SLEEPモード
+    i2c_write_byte_data(pd, fd, PWM_MODE1, 0);          // 通常モード
     time_sleep(0.001);                                    // 発振安定待ち
-    i2c_write_byte_data(*pd, *fd, PWM_MODE1, 0x80);       // 自動インクリメント設定
+    i2c_write_byte_data(pd, fd, PWM_MODE1, 0x80);       // 自動インクリメント設定
 }
