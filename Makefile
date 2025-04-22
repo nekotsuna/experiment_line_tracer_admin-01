@@ -7,3 +7,6 @@ clean:
 
 main: main.o
 	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+
+main: normal.o
+	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
