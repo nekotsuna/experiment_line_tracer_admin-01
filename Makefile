@@ -1,4 +1,5 @@
-BIN = main
+BIN = main \
+      normal
 
 all: $(BIN)
 

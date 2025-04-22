@@ -138,11 +138,11 @@ void main() {
           }
           printf("\n");
 
-          if(output[1] == 1){
-            motor_drive(pd, fd, 8, 5);
-          }
-          if(output[3] == 1){
+          if(output[0] == 1){
             motor_drive(pd, fd, 5, 8);
+          }
+          if(output[4] == 1){
+            motor_drive(pd, fd, 8, 5);
           }
 
           time_sleep(0.01);
