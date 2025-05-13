@@ -1,5 +1,6 @@
 BIN = main \
-      normal
+      normal \
+      course_m
 
 all: $(BIN)
 
@@ -11,3 +12,7 @@ main: main.o
 
 normal: normal.o
 	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+
+course_m: course_m.o
+	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+
