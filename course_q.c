@@ -14,6 +14,12 @@ void main() {
     
     while(1){
       get_sensor(pfd,output);
+
+      for(int i = 0; i < 5; i++){
+           printf("%d ", output[i]);
+      }
+      printf("\n");
+  
       motor_drive(pfd,3,3);
 	    
       if(output[1] == 1){
