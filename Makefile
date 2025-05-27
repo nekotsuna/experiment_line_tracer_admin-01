@@ -1,7 +1,11 @@
 BIN = main \
       normal \
       terminate \
-      course_m
+      straight \
+      course_m \
+      course_n \
+      cource_q \
+      cource_t \
 
 all: $(BIN)
 
@@ -17,6 +21,18 @@ normal: normal.o
 terminate: terminate.o
 	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
 
+straight: straight.o
+	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+
 course_m: course_m.o
+	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+
+course_n: course_n.o
+	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+
+course_q: course_q.o
+	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+
+course_t: course_t.o
 	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
 
