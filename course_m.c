@@ -19,16 +19,19 @@ void main(){
       moter_drive(pfd, 8, 4);
     }
     else if(output[4] == 1){
+      time_sleep(0.5);
       while(1){
-        motor_drive(pfd, 8, 0);
+        motor_drive(pfd, 8, -4);
         if(output[3] == 1){
           break;
         }
       }
     }
     else if(output[0] == 1){
+      time_sleep(0.5)
       while(1){
-        motor_drive(pfd, 0, 8);
+        
+        motor_drive(pfd, -4, 8);
         if(output[1] == 1){
           break;
         }
