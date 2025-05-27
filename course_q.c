@@ -31,8 +31,7 @@ void main() {
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
 	motor_drive(pfd,11,11);
       }
-
-　　　
+	    
 	time_sleep(0.01);
    }
 	
