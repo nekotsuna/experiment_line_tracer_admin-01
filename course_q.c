@@ -8,13 +8,12 @@ void main() {
     PFD pfd;
     int output[5];
     pfd = init();
-
+	
     motor_drive(pfd, 0, 0);
-
-    
+	
     while(1){
       get_sensor(pfd,output);
-
+	    
       for(int i = 0; i < 5; i++){
            printf("%d ", output[i]);
       }
