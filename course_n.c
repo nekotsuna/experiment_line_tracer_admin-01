@@ -15,7 +15,8 @@ void main(){
 
     if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0){
 	motor_drive(pfd, 14, 14);
-
+    }
+	  
     if(output[0] == 1 && output[1] == 1 && output[3] == 0){
 	motor_drive(pfd, 10, 7);
     }
