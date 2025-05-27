@@ -20,17 +20,19 @@ void main() {
       }
       printf("\n");
   
-      motor_drive(pfd,3,3);
+      motor_drive(pfd,10,10);
 	    
       if(output[1] == 1){
-	motor_drive(pfd,3,5);
+	motor_drive(pfd,6,8);
       }
       else if(output[3] == 1){
-	motor_drive(pfd,5,3);
+	motor_drive(pfd,8,6);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
-	motor_drive(pfd,3,3);
+	motor_drive(pfd,10,10);
       }
+
+　　　
 	time_sleep(0.01);
    }
 	
