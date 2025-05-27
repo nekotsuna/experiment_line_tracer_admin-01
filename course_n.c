@@ -14,22 +14,22 @@ void main(){
     get_sensor(pfd, output);
 
     if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0){
-	motor_drive(pfd, 8, 8);
+	motor_drive(pfd, 14, 14);
 
     if(output[0] == 1 && output[1] == 1 && output[3] == 0){
-	motor_drive(pfd, 8, 5);
+	motor_drive(pfd, 10, 7);
     }
     
     else if(output[3] == 1 && output[4] == 1 && output[1] == 0){
-	motor_drive(pfd, 5, 8);
+	motor_drive(pfd, 7, 10);
     }
 
     if(output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 1 && output[4] == 1){
-	motor_drive(pfd, 8, 0);
+	motor_drive(pfd, 10, 0);
 	if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 1){
-    	motor_drive(pfd, 8, 0);
+    	motor_drive(pfd, 10, 0);
 		if(output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 0 && output[4] == 0){
-			motor_drive(pfd, 8, 8);
+			motor_drive(pfd, 14, 14);
 		}
 	}
     }
