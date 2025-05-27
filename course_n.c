@@ -19,6 +19,7 @@ void main(){
     if(output[0] == 1 && output[1] == 1 && output[3] == 0){
 	motor_drive(pfd, 8, 5);
     }
+    
     else if(output[3] == 1 && output[4] == 1 && output[1] == 0){
 	motor_drive(pfd, 5, 8);
     }
@@ -26,16 +27,12 @@ void main(){
     if(output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 1 && output[4] == 1){
 	motor_drive(pfd, 8, 0);
 	if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 1){
-		motor_drive(pfd, 8, 0);
-		if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 1 && output[4] == 0){
-			motor_drive(pfd, 8, 0);
-			if(output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 0 && output[4] == 0){
-				motor_drive(pfd, 8, 8);
-			}
+    	motor_drive(pfd, 8, 0);
+		if(output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 0 && output[4] == 0){
+			motor_drive(pfd, 8, 8);
 		}
 	}
     }
     time_sleep(0.01);
   }
 }
-
