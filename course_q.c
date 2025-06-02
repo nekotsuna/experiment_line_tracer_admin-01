@@ -22,10 +22,10 @@ void main() {
       motor_drive(pfd,11,11);
 	    
       if(output[1] == 1){
-	motor_drive(pfd,7,12);
+	motor_drive(pfd,7,11);
       }
       else if(output[3] == 1){
-	motor_drive(pfd,12,7);
+	motor_drive(pfd,11,7);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
 	motor_drive(pfd,11,11);
