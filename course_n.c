@@ -14,15 +14,15 @@ void main(){
     get_sensor(pfd, output);
 
     if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0){
-	motor_drive(pfd, 11, 11);
+	motor_drive(pfd, 10, 10);
     }
 	  
     if(output[0] == 1 && output[1] == 1 && output[3] == 0){
-	motor_drive(pfd, 10, 7);
+	motor_drive(pfd, 9, 6);
     }
     
     else if(output[3] == 1 && output[4] == 1 && output[1] == 0){
-	motor_drive(pfd, 7, 10);
+	motor_drive(pfd, 6, 9);
     }
 
     if(output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 1 && output[4] == 1){
@@ -30,7 +30,7 @@ void main(){
 	if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 1){
     	motor_drive(pfd, 10, 0);
 		if(output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 0 && output[4] == 0){
-			motor_drive(pfd, 11, 11);
+			motor_drive(pfd, 10, 10);
 		}
 	}
     }
