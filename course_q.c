@@ -33,11 +33,13 @@ void main() {
 	    
       if(output[0] == 1){
 	motor_drive(pfd,0,0);
+	time_sleep(0.1);
 	while(1){
 	 motor_drive(pfd,0,8);
 	 if(output[4] == 1){
 	   break;
 	 }
+	time_sleep(0.01);
 	}
 	motor_drive(pfd,11,11);
       }
