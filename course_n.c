@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
-//#include<pigpiod_if2.h>
+#include<pigpiod_if2.h>
 
-#include "dummy_common.c"
+#include "common.c"
 
 void main(){
   PFD pfd;
