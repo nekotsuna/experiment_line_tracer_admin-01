@@ -37,17 +37,17 @@ void main(){
     else if(MODE == 2){
         get_sensor(pfd, output);
     if(TURN_SET == 1){
-        motor_drive(pfd, 12, 0);
+        motor_drive(pfd, 12, 2);
         TURN_SET++;    
-	time_sleep(1.0);
+	time_sleep(0.6);
     }else if(TURN_SET == 2){
-        motor_drive(pfd, 0, 12);
+        motor_drive(pfd, 2, 12);
         TURN_SET++;
-	time_sleep(1.0);
+	time_sleep(0.5);
     }else if(TURN_SET == 3){
-        motor_drive(pfd, 12, 0);
+        motor_drive(pfd, 12, 2);
         TURN_SET++;
-	time_sleep(1.0);
+	time_sleep(0.6);
     }
     MODE = 1;
     }
