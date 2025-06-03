@@ -33,7 +33,7 @@ void main() {
 	    
       if(output[0] == 1){
 	while(1){
-	 motor_drive(pfd,0,11)
+	 motor_drive(pfd,0,11);
 	 if(output[4] == 1){
 	   break;
 	 }
