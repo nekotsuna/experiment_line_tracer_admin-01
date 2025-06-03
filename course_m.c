@@ -17,6 +17,8 @@ void Go(output[5]){
     else if(output[3] == 1){
       motor_drive(pfd, 5, 3);
 		printf("straight\n");
+    }else{
+	motoe_drive(pfd, 8, 8);
     }
     if((output[0] == 1 && output[3] == 1) || (output[0] == 1 && output[4] == 1) || (output[1] == 1 && output[3] == 1) || (output[1] == 1 && output[4] == 1)){
         MODE = 2;
