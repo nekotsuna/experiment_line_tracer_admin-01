@@ -7,31 +7,35 @@
 int MODE = 1;
 int TURN_SET = 1;
 
-void Go(int output[5]){
-  PFD pfd;	
-  while(1){
-    get_sensor(pfd, output);
-    if(output[1] == 1){
-      motor_drive(pfd, 3, 5);
-		printf("straight\n");
-    }
-    else if(output[3] == 1){
-      motor_drive(pfd, 5, 3);
-		printf("straight\n");
-    }else{
-	motor_drive(pfd, 8, 8);
-    }
-    if((output[0] == 1 && output[3] == 1) || (output[0] == 1 && output[4] == 1) || (output[1] == 1 && output[3] == 1) || (output[1] == 1 && output[4] == 1)){
-        MODE = 2;
-        break;
-    }
-    time_sleep(0.1);
-}
-}
+void main(){
+  PFD pfd;
+  int output[5];
+  pfd = init();
+  //motor_drive(pfd, 8,0);
 
-void TURN(int output[5],int TURN_SET){
-    PFD pfd;
-    get_sensor(pfd, output);
+  while(1){
+    if(MODE == 1){        
+  	while(1){
+  	  get_sensor(pfd, output);
+  	  if(output[1] == 1){
+  	    motor_drive(pfd, 3, 5);
+	    printf("straight\n");
+	    }
+	    else if(output[3] == 1){
+	      motor_drive(pfd, 5, 3);
+	      printf("straight\n");
+    	    }else{
+		motor_drive(pfd, 8, 8);
+    	    }
+    	    if((output[0] == 1 && output[3] == 1) || (output[0] == 1 && output[4] == 1) || (output[1] == 1 && output[3] == 1) || (output[1] == 1 && output[4] == 1)){
+        	MODE = 2;
+        	break;
+    	    }
+    	    time_sleep(0.1);
+	}
+    }
+    else if(MODE == 2){
+        get_sensor(pfd, output);
     if(TURN_SET == 1){
         motor_drive(pfd, 12, 0);
         TURN_SET++;    
@@ -46,20 +50,6 @@ void TURN(int output[5],int TURN_SET){
 	time_sleep(1.0);
     }
     MODE = 1;
-}
-
-void main(){
-  PFD pfd;
-  int output[5];
-  pfd = init();
-  //motor_drive(pfd, 8,0);
-
-  while(1){
-    if(MODE == 1){
-        Go(output);
-    }
-    else if(MODE == 2){
-        TURN(output, TURN_SET);
     }
   }
 }
