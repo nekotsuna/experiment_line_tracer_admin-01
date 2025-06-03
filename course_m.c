@@ -20,11 +20,16 @@ void main(){
   	  if(output[1] == 1){
   	    motor_drive(pfd, 3, 5);
 	    printf("straight\n");
+	    }else if(output[0] == 1){
+		  motor_drive(pfd, 1, 5);
 	    }
 	    else if(output[3] == 1){
 	      motor_drive(pfd, 5, 3);
 	      printf("straight\n");
-    	    }else{
+    	    }else if(output[4]){
+		    motor_drive(pfd, 5, 1);
+	    }
+		    else{
 		motor_drive(pfd, 8, 8);
     	    }
     	    if((output[0] == 1 && output[2] == 1) ||(output[0] == 1 && output[3] == 1) || (output[0] == 1 && output[4] == 1) || (output[1] == 1 && output[3] == 1) || (output[1] == 1 && output[4] == 1) || (output[2] == 1 && output[4] == 1)){
