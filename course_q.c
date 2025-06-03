@@ -38,6 +38,7 @@ void main() {
 	 if(output[4] == 1){
 	   break;
 	 }
+	motor_drive(pfd,11,11);
       }
 
 	    
