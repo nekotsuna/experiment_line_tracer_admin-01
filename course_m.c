@@ -7,7 +7,7 @@
 int MODE = 1;
 int TURN_SET = 1;
 
-void Go(output[5]){
+void Go(int output[5]){
   while(1){
     get_sensor(pfd, output);
     if(output[1] == 1){
@@ -27,7 +27,7 @@ void Go(output[5]){
     time_sleep(0.1);
 }
 
-voud TURN(output[5], TURN_SET){
+voud TURN(int output[5],int TURN_SET){
     if(TURN_SET == 1){
         motor_drive(pfd, 12, 0);
         TURN_SET++;    
