@@ -8,6 +8,7 @@ int MODE = 1;
 int TURN_SET = 1;
 
 void Go(int output[5]){
+  PFD pfd;	
   while(1){
     get_sensor(pfd, output);
     if(output[1] == 1){
@@ -29,11 +30,12 @@ void Go(int output[5]){
 }
 
 void TURN(int output[5],int TURN_SET){
+    PFD pfd;
     if(TURN_SET == 1){
         motor_drive(pfd, 12, 0);
         TURN_SET++;    
     }else if(TURN_SET == 2){
-        motor_drive(pfd, 0, 12;
+        motor_drive(pfd, 0, 12);
         TURN_SET++;    
     }else if(TURN_SET == 3){
         motor_drive(pfd, 12, 0);
