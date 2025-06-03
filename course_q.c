@@ -22,10 +22,10 @@ void main() {
       motor_drive(pfd,11,11);
 	    
       if(output[1] == 1){
-	motor_drive(pfd,7,11);
+	motor_drive(pfd,6,10);
       }
       else if(output[3] == 1){
-	motor_drive(pfd,11,7);
+	motor_drive(pfd,10,6);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
 	motor_drive(pfd,11,11);
@@ -41,9 +41,15 @@ void main() {
 	 }
 	time_sleep(0.01);
 	}
-	motor_drive(pfd,11,11);
-      }
 
+	while(1){
+	 motor_drive(pfd,8,-8);
+	 time_sleep(0.01);
+	 if(output[0] == 0 && output[4] == 0 && output[2] == 1){
+	  break;
+	 }
+       }
+      }
 	    
     time_sleep(0.01);
    }
