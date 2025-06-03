@@ -19,13 +19,11 @@ void main(){
   	  get_sensor(pfd, output);
   	  if(output[1] == 1){
   	    motor_drive(pfd, 3, 5);
-	    printf("straight\n");
 	    }else if(output[0] == 1){
 		  motor_drive(pfd, 1, 5);
 	    }
 	    else if(output[3] == 1){
 	      motor_drive(pfd, 5, 3);
-	      printf("straight\n");
     	    }else if(output[4]){
 		    motor_drive(pfd, 5, 1);
 	    }
