@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<pigpiod_if2.h>
+//#include<pigpiod_if2.h>
 
-#include "common.c"
+#include "dummy_common.c"
 
 void main(){
   PFD pfd;
@@ -15,6 +15,10 @@ void main(){
 
     if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0){
 	motor_drive(pfd, 10, 10);
+    }
+
+    else if(output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 0 && output[4] == 0){
+	    motor_drive(pfd, 10, 10);
     }
 	  
     if(output[0] == 1){
