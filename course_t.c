@@ -5,6 +5,9 @@
 #include "common.c"
 //#include "dummy_common.c"
 
+#define ONLINE 1
+#define OFFLINE 0
+
 void straight(PFD pfd, int sm, int wm);
 
 void main() {
@@ -18,7 +21,7 @@ void main() {
 
 }
 
-void straight(PFD pfd, int sm, int wm){
+/*void straight(PFD pfd, int sm, int wm){
   int output[5];
   int endflag = 1;
   int leftflag = 1;
@@ -41,5 +44,43 @@ void straight(PFD pfd, int sm, int wm){
     }
 
     time_sleep(0.1);
+  }
+}*/
+
+void straight(PFD pfd, int sm, int wm){
+  int output[5];
+
+  enum STATE{
+    STR,
+    LET,
+    RIT,
+    END,
+  };
+
+  enum STATE lastt = LET;
+  enum STATE state = STR;
+
+  while(state != END){
+    get_sensor(pfd, output);
+
+    if(output[2] == ONLINE){
+      if(state != STR){
+        lastt = state;
+        state = STR;  
+        motor_drive(pfd, sm, sm); 
+      }
+    }
+    else if(output[2] == OFFLINE){
+      if(state == STR){
+        if(lastt == LET){
+         state = RIT;
+         motor_drive(pfd, sm, wm);
+        }
+        else if(lastt == RIT){
+         state = LET;
+         motor_drive(pfd, wm, sm);
+        }
+      }
+    } 
   }
 }
