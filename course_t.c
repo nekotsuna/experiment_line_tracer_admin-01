@@ -17,7 +17,7 @@ void main() {
 
   motor_drive(pfd, 8, 8);
 
-  straight(pfd, 8, 5);
+  straight(pfd, 8, 0);
 
 }
 
