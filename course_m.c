@@ -14,9 +14,11 @@ void main(){
   //motor_drive(pfd, 8,0);
 
   while(1){
+    
     if(MODE == 1){        
   	while(1){
   	  get_sensor(pfd, output);
+	  if(output[0] == 1&&output[1] == 1&&output[2] == 1&&output[3] == 1&&output[4] == 1)
   	  if(output[1] == 1){
   	    motor_drive(pfd, 3, 5);
 	    }else if(output[0] == 1){
