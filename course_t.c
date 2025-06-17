@@ -15,9 +15,9 @@ void main() {
   int output[5];
   pfd = init();
 
-  motor_drive(pfd, 8, 8);
+  motor_drive(pfd, 3, 3);
 
-  straight(pfd, 8, 0);
+  straight(pfd, 3, 2);
 
 }
 
@@ -83,7 +83,7 @@ void straight(PFD pfd, int sm, int wm){
       }
     } 
 
-    printf("state: %d\n", state);
+    printf("%d\n", state);
     time_sleep(0.1); 
   }
 }
