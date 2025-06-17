@@ -28,24 +28,29 @@ void main(){
     }
 
     if(output[3] == 1 && output[4] == 1){
-	flag = 4;//全力の右折
+        flag = 4;//全力の右折
+    }
+    
+    
+
+    if(flag == 4){
+        printf("4\n");
+        motor_drive(pfd, 10, 0);
     }
 
-
     if(flag == 1){
-	motor_drive(pfd, 10, 10);
+        printf("1\n");
+        motor_drive(pfd, 10, 10);
     }
   
     else if(flag == 2){
-	motor_drive(pfd, 10, 7);
+        printf("2\n");
+        motor_drive(pfd, 10, 7);
     }
 
     else if(flag == 3){
-	motor_drive(pfd, 7, 10);
-    }
-
-　　else if(flag == 4){
-	motor_drive(pfd, 10, 0);
+        printf("3\n");
+        motor_drive(pfd, 7, 10);
     }
 
     time_sleep(0.01);
