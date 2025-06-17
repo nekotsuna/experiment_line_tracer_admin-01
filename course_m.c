@@ -40,19 +40,24 @@ void main(){
 	}
     }
     else if(MODE == 2){
-        get_sensor(pfd, output);
-    if(TURN_SET == 1){
-        motor_drive(pfd, 12, 1);
-        TURN_SET++;    
-	time_sleep(1.0);
-    }else if(TURN_SET == 2){
-        motor_drive(pfd, 2, 12);
-        TURN_SET++;
-	time_sleep(0.6);
-    }else if(TURN_SET == 3){
-        motor_drive(pfd, 12, 1);
-        TURN_SET++;
-	time_sleep(1.0);
+	int countdown = 0
+        while(1){
+		get_sensor(pfd, output);
+		
+		if(output[0] == 0&&output[1] == 0&&output[2] == 0&&output[3] == 0&&output[4] == 0){
+			countdown++;
+			if(countdown > 5){
+				while(output[4]==0){
+				motor_drive(pfd, 2, 5);
+				}
+				MODE==1;
+				break;
+			}
+		}else{
+			countdown=0;
+		}
+		time_sleep(0.05);
+	}
     }
     MODE = 1;
     }
