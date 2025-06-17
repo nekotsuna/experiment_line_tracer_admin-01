@@ -32,24 +32,24 @@ void main() {
       }
 	    
       if(output[0] == 1){
-	motor_drive(pfd,0,0);
-	time_sleep(0.1);
 	while(1){
-	 motor_drive(pfd,0,8);
-	 if(output[4] == 1){
-	   break;
-	 }
-	time_sleep(0.01);
+	 motor_drive(pfd,9,9);
+	if(output[0]==0 && output[1]==0 && output[2]==0 && output[3]==0 && output[4]==0){
+	 break;
+	  }
+	  time_sleep(0.1);
 	}
-
-	while(1){
-	 motor_drive(pfd,8,-8);
-	 time_sleep(0.01);
-	 if(output[0] == 0 && output[4] == 0 && output[2] == 1){
-	  break;
+	      
+	 while(1){
+	  motor_drive(pfd,0,8);
+	  if(output[3] == 1){
+	   break;
+	  }
+	time_sleep(0.01);
 	 }
-       }
+
       }
+      
 	    
     time_sleep(0.01);
    }
