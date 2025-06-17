@@ -45,12 +45,12 @@ void main(){
   
     else if(flag == 2){
         printf("2\n");
-        motor_drive(pfd, 10, 7);
+        motor_drive(pfd, 7, 5);
     }
 
     else if(flag == 3){
         printf("3\n");
-        motor_drive(pfd, 7, 10);
+        motor_drive(pfd, 5, 7);
     }
 
     time_sleep(0.01);
