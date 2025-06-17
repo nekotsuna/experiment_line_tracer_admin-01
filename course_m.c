@@ -40,7 +40,7 @@ void main(){
 	}
     }
     else if(MODE == 2){
-	int countdown = 0
+	int countdown = 0;
         while(1){
 		get_sensor(pfd, output);
 		
