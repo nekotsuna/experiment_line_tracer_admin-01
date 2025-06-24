@@ -76,8 +76,10 @@ void main() {
                 time_sleep(0.2);
             }
             */
+            for(int i =0; i < 6; i++){
             motor_drive(pfd, 1, 8);
-            time_sleep(0.3);
+            time_sleep(0.05);
+            }
         }
         MODE = 1;
     }
