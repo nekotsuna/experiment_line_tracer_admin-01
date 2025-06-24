@@ -1,4 +1,4 @@
-BIN = main \More actions
+BIN = main \
       normal \
       terminate \
       straight \
