@@ -14,6 +14,7 @@ void main() {
 
     while (1) {
         if (MODE == 1) {
+            int check = 0;
             while (1) {
                 get_sensor(pfd, output);
 
@@ -37,6 +38,11 @@ void main() {
                     (output[2] == 1 && output[4] == 1)) {
                     MODE = 2;
                     break;
+                }else if(output[0]==0&&output[1]==0&&output[2]==0&&output[3]==0&&output[4]==0){
+                    check++;
+                    if(check == 2)MODE = 2;
+                }else{
+                    check = 0;
                 }
 
                 time_sleep(0.1);
@@ -53,7 +59,7 @@ void main() {
                     output[3] == 0 &&
                     output[4] == 0) {
                     countdown++;
-                    if (countdown > 5) {
+                    if (countdown > 2) {
                         while (output[4] == 0) {
                             motor_drive(pfd, 2, 5);
                             get_sensor(pfd, output);
