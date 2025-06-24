@@ -45,7 +45,7 @@ void main() {
                     check = 0;
                 }
 
-                time_sleep(0.1);
+                time_sleep(0.05);
             }
         }
         else if (MODE == 2) {
@@ -77,7 +77,7 @@ void main() {
             }
             */
             for(int i =0; i < 6; i++){
-            motor_drive(pfd, 1, 8);
+            motor_drive(pfd, -4, 8);
             time_sleep(0.05);
             }
         }
