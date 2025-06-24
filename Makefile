@@ -4,8 +4,8 @@ BIN = main \
       straight \
       course_m \
       course_n \
-      cource_q \
-      cource_t \
+      course_q \
+      course_t \
 
 all: $(BIN)
 
