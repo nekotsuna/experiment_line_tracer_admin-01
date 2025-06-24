@@ -8,9 +8,9 @@ BIN = main \
       course_t \
       course_t_setter \
 
-PIEXISTS = TRUE 
+PIEXISTS = $(shell gcc terminate.c -lpigpiod_if2) 
 
-ifeq ($(PIEXISTS),TRUE)
+ifeq ($(PIEXISTS),0)
  PIFLAG = -lpigpiod_if2 -D IN_RASPBERRYPI
 else
  PIFLAG =
@@ -52,4 +52,4 @@ course_t: course_t.o
 	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
 course_t_setter: course_t_setter.o
-	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
