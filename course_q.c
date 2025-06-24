@@ -31,7 +31,7 @@ void main() {
 	motor_drive(pfd,10,10);
       }
 	    
-     if(ourput[0] == 1){ 
+     if(output[0] == 1){ 
 	while(1){ 
 	 motor_drive(pfd,7,7); 
 	 time_sleep(0.01); 
