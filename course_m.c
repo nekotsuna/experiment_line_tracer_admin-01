@@ -19,15 +19,15 @@ void main() {
                 get_sensor(pfd, output);
 
                 if (output[1] == 1) {
-                    motor_drive(pfd, 2, 4);
+                    motor_drive(pfd, 2, 6);
                 } else if (output[0] == 1) {
                     motor_drive(pfd, 1, 6);
                 } else if (output[3] == 1) {
-                    motor_drive(pfd, 4, 2);
+                    motor_drive(pfd, 6, 2);
                 } else if (output[4] == 1) {
                     motor_drive(pfd, 6, 1);
                 } else {
-                    motor_drive(pfd, 4, 4);
+                    motor_drive(pfd, 7, 7);
                 }
 
                 if ((output[0] == 1 && output[2] == 1) ||
@@ -62,7 +62,7 @@ void main() {
                     countdown++;
                     if (countdown > 2) {
                         while (output[4] == 0) {
-                            motor_drive(pfd, 2, 5);
+                            motor_drive(pfd, 2, 6);
                             get_sensor(pfd, output);
                         }
                         MODE = 1;
@@ -77,7 +77,7 @@ void main() {
             }
             */
             motor_drive(pfd, 1, 8);
-            time_sleep(0.2);
+            time_sleep(0.3);
         }
         MODE = 1;
     }
