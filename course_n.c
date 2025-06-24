@@ -42,8 +42,8 @@ void main(){
     
     
 
-    if(flag == 4){
-        printf("4\n");
+    if(flag == 2){
+        printf("2\n");
         motor_drive(pfd, 10, 0);
     }
 
@@ -52,13 +52,13 @@ void main(){
         motor_drive(pfd, 10, 10);
     }
   
-    else if(flag == 2){
-        printf("2\n");
+    else if(flag == 3){
+        printf("3\n");
         motor_drive(pfd, 7, 5);
     }
 
-    else if(flag == 3){
-        printf("3\n");
+    else if(flag == 4){
+        printf("4\n");
         motor_drive(pfd, 5, 7);
     }
 
