@@ -77,7 +77,7 @@ void main() {
                 time_sleep(0.2);
             }
             */
-            for(int i =0; i < 9; i++){
+            for(int i =0; i < 13; i++){
             printf("2");
             motor_drive(pfd, -4, 8);
             time_sleep(0.05);
