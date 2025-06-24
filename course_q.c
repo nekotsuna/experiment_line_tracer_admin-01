@@ -10,6 +10,8 @@
 
 #include "dummy_common.c"
 
+#endif
+
 void main() {
     PFD pfd;
     int output[5];
