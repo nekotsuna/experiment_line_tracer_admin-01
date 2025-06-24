@@ -16,6 +16,7 @@ void main() {
         if (MODE == 1) {
             int check = 0;
             while (1) {
+                printf("1");
                 get_sensor(pfd, output);
 
                 if (output[1] == 1) {
@@ -77,10 +78,11 @@ void main() {
             }
             */
             for(int i =0; i < 6; i++){
+            printf("2");
             motor_drive(pfd, -4, 8);
             time_sleep(0.05);
             }
+            MODE = 1
         }
-        MODE = 1;
     }
 }
