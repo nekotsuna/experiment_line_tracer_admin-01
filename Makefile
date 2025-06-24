@@ -29,3 +29,6 @@ course_m: course_m.o
 
 course_n: course_n.o
 	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+
+course_q: course_q.o
+	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
