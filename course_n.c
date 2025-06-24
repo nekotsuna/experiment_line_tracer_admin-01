@@ -1,8 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<pigpiod_if2.h>
 
+#ifdef IN_RASPBERRYPI
+
+#include <pigpiod_if2.h>
 #include "common.c"
+
+#else
+
+#include "dummy_common.c"
+
+#endif
 
 void main(){
   PFD pfd;
