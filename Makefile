@@ -28,25 +28,25 @@ exets:
 	./course_t_setter
 
 main: main.o
-	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
 normal: normal.o
-	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
 terminate: terminate.o
-	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
 straight: straight.o
-	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
 course_m: course_m.o
-	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
 course_n: course_n.o
-	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
 course_q: course_q.o
-	gcc -Wall -pthread -o $@ $^ -lpigpiod_if2 -lrt
+	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
 course_t: course_t.o
 	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
