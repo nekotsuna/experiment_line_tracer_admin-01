@@ -1,6 +1,4 @@
-BIN = main \
-      normal \
-      terminate \
+BIN = terminate \
       straight \
       course_m \
       course_n \
@@ -26,12 +24,6 @@ exet:
 
 exets:
 	./course_t_setter
-
-main: main.o
-	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
-
-normal: normal.o
-	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
 terminate: terminate.o
 	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
