@@ -82,7 +82,7 @@ void main() {
             motor_drive(pfd, -4, 8);
             time_sleep(0.05);
             }
-            MODE = 1
+            MODE = 1;
         }
     }
 }
