@@ -52,7 +52,7 @@ void main(){
     if(flag == 2){
         printf("2\n");
         for(int i=0; i<10; i++){
-            motor_drive(pfd, 10, -5);
+            motor_drive(pfd, 10, 0);
             time_sleep(0.05);
         }
     }
