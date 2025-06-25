@@ -53,7 +53,6 @@ void main(){
         printf("2\n");
         for(int i=0; i<10; i++){
             motor_drive(pfd, 10, -5);
-            if(){}
             time_sleep(0.05);
         }
     }
