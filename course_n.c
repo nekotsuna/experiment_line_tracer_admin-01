@@ -21,11 +21,11 @@ void main(){
         flag = 2;//全力の右折
     }
      
-    else if(output[0] == 1){
+    else if(output[1] == 1){
         flag = 3;//左に方向調整
     }
  
-    else if(output[4] == 1){
+    else if(output[3] == 1){
         flag = 4;//右に方向調整
     }
  
