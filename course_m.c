@@ -84,7 +84,8 @@ void main() {
             */
             for(int i =0; i < 12; i++){
             printf("2");
-            motor_drive(pfd, 4, 12);
+            if(i < 9)motor_drive(pfd, -5, 10);
+            else motor_drive(pfd, 4, 10);
             time_sleep(0.05);
             }
             MODE = 1;
