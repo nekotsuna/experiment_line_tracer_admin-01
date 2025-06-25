@@ -6,7 +6,7 @@ BIN = terminate \
       course_t \
       course_t_setter \
 
-ifeq ($(shell ls | grep pidpiod_if2_exists), pigpiod_if2_exists)
+ifeq ($(shell ls | grep pigpiod_if2_exists), pigpiod_if2_exists)
  PIFLAG = -lpigpiod_if2 -D IN_RASPBERRYPI
 else
 # PIFLAG = -lpigpiod_if2 -D IN_RASPBERRYPI
