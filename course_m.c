@@ -82,9 +82,9 @@ void main() {
                 time_sleep(0.2);
             }
             */
-            for(int i =0; i < 12; i++){
-            printf("2");
-            if(i < 9)motor_drive(pfd, -5, 10);
+            for(int i =0; i < 13; i++){
+            //printf("2");
+            if(i < 10)motor_drive(pfd, -5, 10);
             else motor_drive(pfd, 4, 10);
             time_sleep(0.05);
             }
