@@ -20,6 +20,7 @@ void main(){
     else if(output[3] == 1 && output[4] == 1){
         flag = 2;//全力の右折
     }
+     
     else if(output[0] == 1){
         flag = 3;//左に方向調整
     }
@@ -35,7 +36,7 @@ void main(){
  
     if(flag == 2){
         printf("2\n");
-        for(int i=0; i<4; i++){
+        for(int i=0; i<10; i++){
             motor_drive(pfd, 10, -5);
             time_sleep(0.05);
         }
@@ -47,12 +48,12 @@ void main(){
     }
     else if(flag == 3){
         printf("3\n");
-        motor_drive(pfd, 4, 8);
+        motor_drive(pfd, 4, 9);
     }
  
     else if(flag == 4){
         printf("4\n");
-        motor_drive(pfd, 8, 4);
+        motor_drive(pfd, 9, 4);
     }
  
     time_sleep(0.01);
