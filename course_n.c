@@ -35,7 +35,10 @@ void main(){
  
     if(flag == 2){
         printf("2\n");
-        motor_drive(pfd, 10, -5);
+        for(int i=0; i<4; i++){
+            motor_drive(pfd, 10, -5);
+            time_sleep(0.05);
+        }
     }
  
     if(flag == 1){
