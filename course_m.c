@@ -80,9 +80,9 @@ void main() {
                 time_sleep(0.2);
             }
             */
-            for(int i =0; i < 13; i++){
+            for(int i =0; i < 11; i++){
             printf("2");
-            motor_drive(pfd, -4, 8);
+            motor_drive(pfd, -2, 8);
             time_sleep(0.05);
             }
             MODE = 1;
