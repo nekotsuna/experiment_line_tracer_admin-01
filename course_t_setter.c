@@ -2,7 +2,7 @@
 #include <stdlib.h> 
 
 #define BUFMAX 256
-#define STRLEN 2
+#define STRLEN 3
 
 int main(){
   FILE* fp = fopen("course_t_setting.txt", "w"); 
@@ -12,8 +12,9 @@ int main(){
   }
 
   const char* str[STRLEN] = { \
+     "sec", \
      "straight sm", \
-     "straight wm"  \
+     "straight wm",  \
   };
 
   char buf[BUFMAX];
