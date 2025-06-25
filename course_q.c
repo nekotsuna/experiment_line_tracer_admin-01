@@ -55,7 +55,9 @@ void main() {
 	 printf("kaiten\n");
 	 motor_drive(pfd,-9,9);
 	 time_sleep(0.01);
-	 if(output[2] == 1){
+	 if(output[1] == 1){
+	  motor_drive(pfd,0,0);
+	  time_sleep(10);
 	  printf("hureta\n");
 	  break;
 	 }
