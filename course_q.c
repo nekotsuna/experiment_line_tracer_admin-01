@@ -20,16 +20,16 @@ void main() {
       }
       printf("\n");
   
-      motor_drive(pfd,9,9);
+      motor_drive(pfd,10,10);
 	    
       if(output[1] == 1){
-	motor_drive(pfd,5,9);
+	motor_drive(pfd,6,10);
       }
       else if(output[3] == 1){
-	motor_drive(pfd,9,5);
+	motor_drive(pfd,10,6);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
-	motor_drive(pfd,9,9);
+	motor_drive(pfd,10,10);
       }
 
 
@@ -55,7 +55,7 @@ void main() {
 	 printf("kaiten\n");
 	 motor_drive(pfd,-9,9);
 	 time_sleep(0.01);
-	 if(output[3] == 1){
+	 if(output[2] == 1){
 	  printf("hureta\n");
 	  break;
 	 }
@@ -64,8 +64,6 @@ void main() {
 	flag++;
      }
 
-	    
-      
 	    
     time_sleep(0.01);
    }
