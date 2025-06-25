@@ -20,11 +20,11 @@ void main() {
                 get_sensor(pfd, output);
 
                 if (output[1] == 1) {
-                    motor_drive(pfd, 3, 10);
+                    motor_drive(pfd, 4, 8);
                 } else if (output[0] == 1) {
                     motor_drive(pfd, 1, 9);
                 } else if (output[3] == 1) {
-                    motor_drive(pfd, 10, 3);
+                    motor_drive(pfd, 8, 4);
                 } else if (output[4] == 1) {
                     motor_drive(pfd, 9, 1);
                 } else if(output[2] == 1){
