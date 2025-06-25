@@ -42,7 +42,7 @@ void main() {
                 }else 
                     */if(output[0]==0&&output[1]==0&&output[2]==0&&output[3]==0&&output[4]==0){
                     check++;
-                    if(check == 8){
+                    if(check == 5){
                         MODE = 2;
                         check = 0;
                         break;
