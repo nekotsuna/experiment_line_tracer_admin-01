@@ -83,9 +83,9 @@ void main() {
                 time_sleep(0.2);
             }
             */
-            for(int i =0; i < 19; i++){
+            for(int i =0; i < 20; i++){
             //printf("2");
-            if(i < 13)motor_drive(pfd, -5, 10);
+            if(i < 14)motor_drive(pfd, -5, 10);
             else motor_drive(pfd, 9, 9);
             time_sleep(0.05);
             }
