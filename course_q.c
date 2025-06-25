@@ -6,6 +6,7 @@
 
 void main() {
     PFD pfd;
+    int flag=0;
     int output[5];
     pfd = init();
 	
@@ -30,8 +31,9 @@ void main() {
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
 	motor_drive(pfd,10,10);
       }
-	    
-     if(output[0] == 1){ 
+
+     if(flag==0){
+	if(output[0] == 1){ 
 	while(1){ 
 	 motor_drive(pfd,7,7); 
 	 time_sleep(0.01); 
@@ -39,8 +41,17 @@ void main() {
 	  break;
 	 }
 	}
-     }
-	
+
+	while(1){
+	 motor_drive(pfd,-8,8);
+	 time_sleep(0.01);
+	 if(output[1] == 1){
+	  break;
+	 }
+	}
+      }
+	flag++;
+     }	
 	    
     time_sleep(0.01);
    }
