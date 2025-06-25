@@ -43,6 +43,7 @@ void main() {
                     check++;
                     if(check == 8){
                         MODE = 2;
+                        check = 0;
                         break;
                     }
                 }else{
@@ -80,9 +81,9 @@ void main() {
                 time_sleep(0.2);
             }
             */
-            for(int i =0; i < 11; i++){
+            for(int i =0; i < 12; i++){
             printf("2");
-            motor_drive(pfd, -2, 8);
+            motor_drive(pfd, -4, 8);
             time_sleep(0.05);
             }
             MODE = 1;
