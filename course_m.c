@@ -46,7 +46,7 @@ void main() {
                     check = 0;
                 }
 
-                time_sleep(0.05);
+                time_sleep(0.025);
             }
         }
         else if (MODE == 2) {
