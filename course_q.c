@@ -15,10 +15,10 @@ void main() {
     while(1){
       get_sensor(pfd,output);
 	    
-      /*for(int i = 0; i < 5; i++){
+      for(int i = 0; i < 5; i++){
            printf("%d ", output[i]);
       }
-      printf("\n");*/
+      printf("\n");
   
       motor_drive(pfd,10,10);
 	    
@@ -33,7 +33,7 @@ void main() {
       }
 
 
-	 if(output[0] == 1){ 
+       if(output[0] == 1){ 
 	 while(1){ 
 	  get_sensor(pfd,output);
 	  motor_drive(pfd,8,8); 
