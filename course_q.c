@@ -34,6 +34,7 @@ void main() {
 
       if(output[0] == 1){ 
 	 while(1){ 
+	  get_sensor(pfd,output);
 	  motor_drive(pfd,6,6); 
 	  printf("massugu\n");
 	  time_sleep(0.01);
@@ -48,6 +49,7 @@ void main() {
 	 }
 
 	while(1){
+	 get_sensor(pfd,output);
 	 printf("kaiten\n");
 	 motor_drive(pfd,-9,9);
 	 time_sleep(0.01);
