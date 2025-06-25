@@ -32,20 +32,13 @@ void main(){
     else{
           flag = 1;
     }
- 
- 
-    if(flag == 2){
-        printf("2\n");
-        for(int i=0; i<10; i++){
-            motor_drive(pfd, 10, -5);
-            time_sleep(0.05);
-        }
-    }
- 
+
+
     if(flag == 1){
         printf("1\n");
         motor_drive(pfd, 10, 10);
     }
+
     else if(flag == 3){
         printf("3\n");
         motor_drive(pfd, 3, 9);
@@ -54,6 +47,15 @@ void main(){
     else if(flag == 4){
         printf("4\n");
         motor_drive(pfd, 9, 3);
+    }
+ 
+    if(flag == 2){
+        printf("2\n");
+        for(int i=0; i<10; i++){
+            motor_drive(pfd, 10, -5);
+            if(){}
+            time_sleep(0.05);
+        }
     }
  
     time_sleep(0.01);
