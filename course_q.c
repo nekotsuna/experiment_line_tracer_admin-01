@@ -36,16 +36,20 @@ void main() {
 	if(output[0] == 1){ 
 	while(1){ 
 	 motor_drive(pfd,6,6); 
+	 printf("massugu\n");
 	 time_sleep(0.01); 
 	 if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0){
+	  printf("subete0\n");
 	  break;
 	 }
 	}
 
 	while(1){
 	 motor_drive(pfd,-8,8);
+	 printf("kaiten\n");
 	 time_sleep(0.01);
 	 if(output[1] == 1){
+	  printf("hureta\n");
 	  break;
 	 }
 	}
