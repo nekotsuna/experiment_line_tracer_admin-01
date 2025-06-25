@@ -33,6 +33,7 @@ void main() {
       }
 
      if(flag==0){
+	 printf("flag\n");
 	if(output[0] == 1){ 
 	while(1){ 
 	 motor_drive(pfd,6,6); 
