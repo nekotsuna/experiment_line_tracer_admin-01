@@ -33,7 +33,6 @@ void main() {
       }
 
 
-        if(flag == 0){
 	 if(output[0] == 1){ 
 	 while(1){ 
 	  get_sensor(pfd,output);
@@ -63,8 +62,6 @@ void main() {
 	 }
 	}
       }
-	flag++;
-     }
 
 	    
     time_sleep(0.01);
