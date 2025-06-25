@@ -82,7 +82,7 @@ void main() {
                 time_sleep(0.2);
             }
             */
-            for(int i =0; i < 22; i++){
+            for(int i =0; i < 19; i++){
             //printf("2");
             if(i < 12)motor_drive(pfd, -5, 10);
             else motor_drive(pfd, 9, 9);
