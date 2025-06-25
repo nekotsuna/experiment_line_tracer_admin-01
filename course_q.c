@@ -35,7 +35,7 @@ void main() {
       if(output[0] == 1){ 
 	 while(1){ 
 	  get_sensor(pfd,output);
-	  motor_drive(pfd,6,6); 
+	  motor_drive(pfd,8,8); 
 	  printf("massugu\n");
 	  time_sleep(0.01);
 	   for(int i = 0; i < 5; i++){
@@ -53,7 +53,7 @@ void main() {
 	 printf("kaiten\n");
 	 motor_drive(pfd,-9,9);
 	 time_sleep(0.01);
-	 if(output[1] == 1){
+	 if(output[3] == 1){
 	  printf("hureta\n");
 	  break;
 	 }
