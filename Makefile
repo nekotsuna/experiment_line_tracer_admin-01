@@ -39,7 +39,7 @@ course_n: course_n.o
 course_q: course_q.o
 	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
-course_t: course_t.o
+course_t: course_t.c
 	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
 course_t_setter: course_t_setter.o
