@@ -44,12 +44,12 @@ void main(){
     }
     else if(flag == 3){
         printf("3\n");
-        motor_drive(pfd, 8, 4);
+        motor_drive(pfd, 4, 8);
     }
  
     else if(flag == 4){
         printf("4\n");
-        motor_drive(pfd, 4, 8);
+        motor_drive(pfd, 8, 4);
     }
  
     time_sleep(0.01);
