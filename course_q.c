@@ -36,7 +36,11 @@ void main() {
 	 while(1){ 
 	  motor_drive(pfd,6,6); 
 	  printf("massugu\n");
-	  time_sleep(0.01); 
+	  time_sleep(0.01);
+	   for(int i = 0; i < 5; i++){
+            printf("%d ", output[i]);
+           }
+           printf("\n"); 
 	  if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0){
 	   printf("subete zero\n");
 	   break;
