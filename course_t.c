@@ -12,20 +12,22 @@
 
 #endif
 
+
 #define ONLINE 1
 #define OFFLINE 0
 
-#define SETSMAX 3 
+#define SETSMAX 4 
 #define BUFMAX 256
 
 typedef struct setting{
-  int straight_sm;
-  int straight_wm;
   double sec;
+  int straight;
+  int bending_sm;
+  int bending_wm;
 } Setting;
 
 Setting* setting();
-void straight(PFD pfd, int sm, int wm, double sec);
+void straight(PFD pfd, int straight, int sm, int wm, double sec);
 
 void main() {
   PFD pfd;
@@ -34,11 +36,12 @@ void main() {
   Setting* set = setting();
 
   printf("sec = %f\n", set->sec);
-  printf("straight sm = %d\n", set->straight_sm);
-  printf("straight wm = %d\n", set->straight_wm);
+  printf("straight = %d\n", set->straight);
+  printf("bending sm = %d\n", set->bending_sm);
+  printf("bending wm = %d\n", set->bending_wm);
 
-  motor_drive(pfd, set->straight_sm, set->straight_sm);
-  straight(pfd, set->straight_sm, set->straight_wm, set->sec);
+  motor_drive(pfd, set->straight, set->straight);
+  straight(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec);
 }
 
 Setting* setting(){
@@ -71,15 +74,16 @@ Setting* setting(){
   }
 
   set->sec = (double)sets[0] / (double)1000;
-  set->straight_sm = sets[1];
-  set->straight_wm = sets[2];
+  set->straight = sets[1];
+  set->bending_sm= sets[2];
+  set->bending_wm = sets[3];
 
   fclose(fp);
 
   return set;
 }
 
-void straight(PFD pfd, int sm, int wm, double sec){
+void straight(PFD pfd, int straight, int sm, int wm, double sec){
   int output[5];
 
   enum STATE{
@@ -113,7 +117,7 @@ void straight(PFD pfd, int sm, int wm, double sec){
       if(state != STR){
         lastt = state;
         state = STR;  
-        motor_drive(pfd, sm, sm); 
+        motor_drive(pfd, straight, straight); 
       }
     }
     else if(output[2] == OFFLINE){
