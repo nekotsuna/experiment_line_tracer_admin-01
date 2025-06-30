@@ -26,8 +26,16 @@ typedef struct setting{
   int bending_wm;
 } Setting;
 
+typedef enum STATE{
+    STR,
+    LET,
+    RIT,
+    END,
+} STATE;
+
 Setting* setting();
-void straight(PFD pfd, int straight, int sm, int wm, double sec);
+STATE initialize(PFD pfd, int straight, int sm, int wm, double sec);
+void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE lastt);
 
 void main() {
   PFD pfd;
@@ -41,7 +49,9 @@ void main() {
   printf("bending wm = %d\n", set->bending_wm);
 
   motor_drive(pfd, set->straight, set->straight);
-  straight(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec);
+  STATE lastt = initialize(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec);
+  printf("out init\n");
+  straight(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec, lastt);
 }
 
 Setting* setting(){
@@ -83,32 +93,35 @@ Setting* setting(){
   return set;
 }
 
-void straight(PFD pfd, int straight, int sm, int wm, double sec){
+STATE initialize(PFD pfd, int straight, int sm, int wm, double sec){
   int output[5];
 
-  enum STATE{
-    STR,
-    LET,
-    RIT,
-    END,
-  };
 
-  enum STATE lastt; 
-  enum STATE state = STR;
+  STATE lastt;
+  STATE state = STR;
   while(state != END){
     get_sensor(pfd, output);
     if(output[1] == ONLINE){
       motor_drive(pfd, wm, sm);
       state = LET;
+      lastt = LET;
     }
     if(output[3] == ONLINE){
       motor_drive(pfd, sm, wm);
       state = RIT;
+      lastt = RIT;
     }
     time_sleep(sec);
   }
 
-  printf("out init\n");
+  return lastt;
+}
+
+void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE lastt){
+  int output[5];
+
+  STATE state = LET;
+
 
   while(state != END){
     get_sensor(pfd, output);
@@ -136,4 +149,5 @@ void straight(PFD pfd, int straight, int sm, int wm, double sec){
     printf("%d\n", state);
     time_sleep(sec); 
   }
+
 }
