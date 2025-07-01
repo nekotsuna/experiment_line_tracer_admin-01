@@ -9,27 +9,32 @@ void main(){
   int output[5];
   pfd = init();
   motor_drive(pfd, 0, 0);
-  int flag = 10;
+  int S_flag = 0;
+  int flag = 1;
   while(1){
     get_sensor(pfd, output);
 
     if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1){
-           flag = 10;
+        S_flag = 0;//停止
     }
+
+   else{
+        S_flag = 1;//動いてヨシ
+   }
    
-    if((output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0) || (output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 0 && output[4] == 0)){
+    if((output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0 && S_flag == 1) || (output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 0 && output[4] == 0 && S_flag == 1)){
         flag = 1;//直進
     }
  
-    else if(output[3] == 1 && output[4] == 1){
+    else if(output[3] == 1 && output[4] == 1 && S_flag == 1){
         flag = 2;//全力の右折
     }
      
-    else if(output[1] == 1){
+    else if(output[1] == 1 && S_flag == 1){
         flag = 3;//左に方向調整
     }
  
-    else if(output[3] == 1){
+    else if(output[3] == 1 && S_flag == 1){
         flag = 4;//右に方向調整
     }
  
@@ -38,14 +43,14 @@ void main(){
     }
 
 
-    if(flag == 10){
-        printf("10\n");
+    if(S_flag == 0){
+        printf("0\n");
         motor_drive(pfd, 0, 0);
     }
 
     if(flag == 1){
         printf("1\n");
-        motor_drive(pfd, 11, 11);
+        motor_drive(pfd, 10, 10);
     }
 
     else if(flag == 3){
