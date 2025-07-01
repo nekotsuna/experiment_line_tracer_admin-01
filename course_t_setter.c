@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h> 
 
-#define STRLEN 4 
+#define STRLEN 6 
 #define BUFMAX 256
 
 int main(){
@@ -16,6 +16,8 @@ int main(){
      "straight", \
      "bending sm", \
      "bending wm",  \
+     "curve_sm", \
+     "curve_wm", \
   };
 
   char buf[BUFMAX];
