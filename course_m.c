@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <pigpiod_if2.h>
 #include "common.c"
-//complete
+//complete now
 
 int MODE = 1;
 int TURN_SET = 1;
