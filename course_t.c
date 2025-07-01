@@ -38,6 +38,7 @@ typedef enum STATE{
 } STATE;
 
 Setting* setting();
+void start(PFD pfd);
 STATE initialize(PFD pfd, int straight, int sm, int wm, double sec);
 void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE lastt);
 void curve(PFD pfd, int lm, int rm, double sec);
@@ -56,7 +57,7 @@ void main() {
   printf("curve wm = %d\n", set->curve_wm);
 
   start(pfd);
-  printf("ou start\n");
+  printf("out start\n");
   motor_drive(pfd, set->straight, set->straight);
   STATE lastt = initialize(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec);
   printf("out init\n");
