@@ -127,12 +127,12 @@ STATE initialize(PFD pfd, int straight, int sm, int wm, double sec){
     get_sensor(pfd, output);
     if(output[1] == ONLINE){
       motor_drive(pfd, wm, sm);
-      state = LET;
+      state = END;
       lastt = LET;
     }
     if(output[3] == ONLINE){
       motor_drive(pfd, sm, wm);
-      state = RIT;
+      state = END;
       lastt = RIT;
     }
     time_sleep(sec);
