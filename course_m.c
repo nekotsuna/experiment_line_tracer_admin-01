@@ -20,12 +20,13 @@ void main() {
                 get_sensor(pfd, output);
                 int calc = output[0] + output[1] + output[2] + output[3] + output[4];
                 int calckeep = calc;
-                if(calckeep == 5){
+                while(calckeep == 5){
                     get_sensor(pfd, output);
                     int calc = output[0] + output[1] + output[2] + output[3] + output[4];
-                    while(calc < 1){
+                    if(calc < 1){
                         startcheck = 1;
                         calckeep = 0;
+                        break;
                     }
                     time_sleep(0.25);
                 }
