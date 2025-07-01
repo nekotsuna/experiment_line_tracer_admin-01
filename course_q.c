@@ -15,6 +15,7 @@ void main() {
 		motor_drive(pfd,0,0);	
 	}
 	else {
+	  printf("start\n");
 	  break;
 	}
     }
@@ -27,16 +28,16 @@ void main() {
       }
       printf("\n");
   
-      motor_drive(pfd,9,9);
+      motor_drive(pfd,10,10);
 	
       if(output[3] == 1){
-	motor_drive(pfd,5,9);
+	motor_drive(pfd,10,6);
       }
       else if(output[1] == 1){
-	motor_drive(pfd,9,5);
+	motor_drive(pfd,10,6);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
-	motor_drive(pfd,9,9);
+	motor_drive(pfd,10,10);
       }
 
 
