@@ -15,7 +15,7 @@ void main() {
     int startcheck = 0;
     while (1) {
         if (MODE == 1) {
-            
+            int check = 0;
             while (1) {
                 printf("1");
                 get_sensor(pfd, output);
