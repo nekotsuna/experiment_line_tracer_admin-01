@@ -12,6 +12,7 @@ void main() {
 	
     while(1){
 	if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1){
+		printf("stop\n");
 		motor_drive(pfd,0,0);	
 	}
 	else {
