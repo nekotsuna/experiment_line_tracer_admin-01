@@ -16,14 +16,14 @@ void main() {
     while (1) {
         if (MODE == 1) {
             
-            if(startcheck == 0){
+            while(startcheck == 0){
                 get_sensor(pfd, output);
                 int calc = output[0] + output[1] + output[2] + output[3] + output[4];
                 int calckeep = calc;
                 if(calckeep == 5){
                     get_sensor(pfd, output);
                     int calc = output[0] + output[1] + output[2] + output[3] + output[4];
-                    if(calc < 1){
+                    while(calc < 1){
                         startcheck = 1;
                         calckeep = 0;
                     }
