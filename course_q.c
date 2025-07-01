@@ -43,8 +43,8 @@ void main() {
 	motor_drive(pfd,9,9);
       }
 
-      if(flag == 0){
-       if(output[0] == 1){ 
+      if(output[0] == 1){
+       if(flag == 0){ 
 	 while(1){ 
 	  get_sensor(pfd,output);
 	  motor_drive(pfd,8,8); 
@@ -69,9 +69,9 @@ void main() {
 	  break;
 	 }
 	}
-      }
 	flag++;
-    }
+       }
+      }
 
     time_sleep(0.01);
    }
