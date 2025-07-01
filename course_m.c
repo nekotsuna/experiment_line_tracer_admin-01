@@ -20,9 +20,9 @@ void main() {
                 printf("1");
                 get_sensor(pfd, output);
 
-                if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1) motor_drive(pfd, 0, 0);
-                
-                if (output[4] == 1) {
+                if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1){
+                    motor_drive(pfd, 0, 0);
+                }else if (output[4] == 1) {
                     motor_drive(pfd, 11, 1);
                 } else if (output[3] == 1) {
                     motor_drive(pfd, 8, 4);
@@ -43,7 +43,8 @@ void main() {
                     MODE = 2;
                     break;
                 }else 
-                    */if(output[0]==0&&output[1]==0&&output[2]==0&&output[3]==0&&output[4]==0){
+                    */
+                    if(output[0]==0&&output[1]==0&&output[2]==0&&output[3]==0&&output[4]==0){
                     check++;
                     if(check == 6){
                         MODE = 2;
