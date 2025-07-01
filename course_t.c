@@ -48,6 +48,7 @@ void start(PFD pfd);
 STATE initialize(PFD pfd, int straight, int sm, int wm, double sec);
 void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, STRTERM strterm, int nodetect_countmax);
 void curve(PFD pfd, int lm, int rm, double sec);
+void straight_oncross(PFD pfd, int sm, double sec);
 
 void main() {
   PFD pfd;
@@ -227,4 +228,19 @@ void curve(PFD pfd, int lm, int rm, double sec){
       time_sleep(sec); 
     }
   }     
+}
+
+void straight_oncross(PFD pfd, int sm, double sec){
+  int output[5];
+
+  STATE state = STR;
+  motor_drive(pfd, sm, sm);
+
+  while(state != END){
+    get_sensor(pfd, output);
+
+    if(output[0] == OFFLINE && output[4] == OFFLINE) state = END;
+
+    time_sleep(sec);
+  }
 }
