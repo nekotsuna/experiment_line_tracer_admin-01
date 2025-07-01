@@ -16,7 +16,7 @@
 #define ONLINE 1
 #define OFFLINE 0
 
-#define SETSMAX 4 
+#define SETSMAX 6 
 #define BUFMAX 256
 
 typedef struct setting{
@@ -24,18 +24,22 @@ typedef struct setting{
   int straight;
   int bending_sm;
   int bending_wm;
+  int curve_sm;
+  int curve_wm;
 } Setting;
 
 typedef enum STATE{
     STR,
     LET,
     RIT,
+    CUV,
     END,
 } STATE;
 
 Setting* setting();
 STATE initialize(PFD pfd, int straight, int sm, int wm, double sec);
 void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE lastt);
+void curve(PFD pfd, int lm, int rm, double sec);
 
 void main() {
   PFD pfd;
@@ -47,11 +51,15 @@ void main() {
   printf("straight = %d\n", set->straight);
   printf("bending sm = %d\n", set->bending_sm);
   printf("bending wm = %d\n", set->bending_wm);
+  printf("curve sm = %d\n", set->curve_sm);
+  printf("curve wm = %d\n", set->curve_wm);
 
   motor_drive(pfd, set->straight, set->straight);
   STATE lastt = initialize(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec);
   printf("out init\n");
   straight(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec, lastt);
+  printf("out straight\n");
+  curve(pfd, set->curve_sm, set->curve_wm, set->sec); //right curve
 }
 
 Setting* setting(){
@@ -87,6 +95,8 @@ Setting* setting(){
   set->straight = sets[1];
   set->bending_sm= sets[2];
   set->bending_wm = sets[3];
+  set->curve_sm = sets[4];
+  set->curve_wm = sets[5];
 
   fclose(fp);
 
@@ -126,7 +136,10 @@ void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE lastt){
   while(state != END){
     get_sensor(pfd, output);
 
-    if(output[2] == ONLINE){
+    if(output[0] == ONLINE || output[4] == ONLINE){
+      state = END;
+    }
+    else if(output[2] == ONLINE){
       if(state != STR){
         lastt = state;
         state = STR;  
@@ -150,4 +163,21 @@ void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE lastt){
     time_sleep(sec); 
   }
 
+}
+
+void curve(PFD pfd, int lm, int rm, double sec){
+  int output[5];
+
+  STATE state = CUV;
+  motor_drive(pfd, lm, rm);
+
+  while(state != END){
+    get_sensor(pfd, output);
+
+    if(output[0] == ONLINE || output[4] == ONLINE){
+      state = END;
+
+      time_sleep(sec); 
+    }
+  }     
 }
