@@ -16,32 +16,12 @@ void main() {
     while (1) {
         if (MODE == 1) {
             
-            while(startcheck == 0){
-                printf("1");
-                get_sensor(pfd, output);
-                int calc = output[0] + output[1] + output[2] + output[3] + output[4];
-                int calckeep = calc;
-                while(calckeep == 5){
-                    printf("2");
-                    get_sensor(pfd, output);
-                    calc = output[0] + output[1] + output[2] + output[3] + output[4];
-                    if(calc < 1){
-                        startcheck = 1;
-                        calckeep = 0;
-                        break;
-                    }
-                    time_sleep(0.25);
-                }
-                if(startcheck == 1)break;
-                time_sleep(0.25);
-            }
-            
-            int check = 0;
-            
             while (1) {
                 printf("1");
                 get_sensor(pfd, output);
 
+                if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1) motor_drive(pfd, 0, 0);
+                
                 if (output[4] == 1) {
                     motor_drive(pfd, 11, 1);
                 } else if (output[3] == 1) {
