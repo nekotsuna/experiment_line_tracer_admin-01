@@ -10,7 +10,8 @@ void main() {
     int output[5];
     pfd = init();
 	
-    /*while(1){
+    while(1){
+	get_sensor(pfd,output);
 	if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1){
 		printf("stop\n");
 		motor_drive(pfd,0,0);	
@@ -20,7 +21,7 @@ void main() {
 	  printf("start\n");
 	  break;
 	}
-    }*/
+    }
 	
     while(1){
       get_sensor(pfd,output);
