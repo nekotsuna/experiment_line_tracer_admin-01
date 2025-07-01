@@ -12,10 +12,28 @@ void main() {
     int output[5];
     pfd = init();
     // motor_drive(pfd, 8, 0);
-
+    int startcheck = 0;
     while (1) {
         if (MODE == 1) {
+            
+            if(startcheck == 0){
+                get_sensor(pfd, output);
+                int calc = output[0] + output[1] + output[2] + output[3] + output[4];
+                int calckeep = calc;
+                if(calckeep == 5){
+                    get_sensor(pfd, output);
+                    int calc = output[0] + output[1] + output[2] + output[3] + output[4];
+                    if(calc < 1){
+                        startcheck = 1;
+                        calckeep = 0;
+                    }
+                    time_sleep(0.25);
+                }
+                time_sleep(0.25);
+            }
+            
             int check = 0;
+            
             while (1) {
                 printf("1");
                 get_sensor(pfd, output);
