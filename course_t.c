@@ -33,6 +33,7 @@ typedef enum STATE{
     LET,
     RIT,
     CUV,
+    STP,
     END,
 } STATE;
 
@@ -54,6 +55,8 @@ void main() {
   printf("curve sm = %d\n", set->curve_sm);
   printf("curve wm = %d\n", set->curve_wm);
 
+  start(pfd);
+  printf("ou start\n");
   motor_drive(pfd, set->straight, set->straight);
   STATE lastt = initialize(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec);
   printf("out init\n");
@@ -101,6 +104,16 @@ Setting* setting(){
   fclose(fp);
 
   return set;
+}
+
+void start(PFD pfd){
+  int output[5];
+  STATE state = STP;
+
+  while(state != END){
+    get_sensor(pfd, output);
+    if(output[0] == ONLINE && output[1] == ONLINE && output[2] == ONLINE && output[3] == ONLINE && output[4] == ONLINE) state = END;
+  }
 }
 
 STATE initialize(PFD pfd, int straight, int sm, int wm, double sec){
