@@ -9,13 +9,13 @@ void main(){
   int output[5];
   pfd = init();
   motor_drive(pfd, 0, 0);
-  int flag = 1;
+  int flag = 10;
   while(1){
     get_sensor(pfd, output);
 
-    //if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1){
-     
-    //}
+    if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1){
+           flag = 10;
+    }
    
     if((output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0) || (output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 0 && output[4] == 0)){
         flag = 1;//直進
@@ -37,6 +37,11 @@ void main(){
           flag = 1;
     }
 
+
+    if(flag == 10){
+        printf("10\n");
+        motor_drive(pfd, 0, 0);
+    }
 
     if(flag == 1){
         printf("1\n");
