@@ -38,6 +38,7 @@ typedef enum STATE{
 } STATE;
 
 Setting* setting();
+void print_sensor(PFD pfd);
 void start(PFD pfd);
 STATE initialize(PFD pfd, int straight, int sm, int wm, double sec);
 void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state);
@@ -105,6 +106,16 @@ Setting* setting(){
   fclose(fp);
 
   return set;
+}
+
+void print_sensor(PFD pfd){
+  int output[5];
+  get_sensor(pfd, output);
+
+  for(int i = 0; i < 5; i++){
+    printf("[%d] = %d, ", i, output[i]);
+  }
+  printf("\n");
 }
 
 void start(PFD pfd){
