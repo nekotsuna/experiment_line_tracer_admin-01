@@ -37,11 +37,16 @@ typedef enum STATE{
     END,
 } STATE;
 
+typedef enum STRTERM{
+    ONCROSS,
+    NODETECT,
+} STRTERM;
+
 Setting* setting();
 void print_sensor(PFD pfd);
 void start(PFD pfd);
 STATE initialize(PFD pfd, int straight, int sm, int wm, double sec);
-void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state);
+void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, STRTERM strterm, int nodetect_countmax);
 void curve(PFD pfd, int lm, int rm, double sec);
 
 void main() {
@@ -62,7 +67,7 @@ void main() {
   motor_drive(pfd, set->straight, set->straight);
   STATE lastt = initialize(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec);
   printf("out init\n");
-  straight(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec, lastt);
+  straight(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec, lastt, ONCROSS, 0);
   printf("out straight\n");
   curve(pfd, set->curve_sm, set->curve_wm, set->sec); //right curve
 }
@@ -152,15 +157,33 @@ STATE initialize(PFD pfd, int straight, int sm, int wm, double sec){
   return lastt;
 }
 
-void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state){
+void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, STRTERM strterm, int nodetect_countmax){
   int output[5];
+  int nodetect_count = 0;
 
   STATE lastt;
 
   while(state != END){
     get_sensor(pfd, output);
 
-    if(output[0] == ONLINE || output[4] == ONLINE){
+    switch(strterm){
+      case ONCROSS:
+        if(output[0] == ONLINE || output[4] == ONLINE) state = END;
+        break;
+
+      case NODETECT:
+        if(output[0] == OFFLINE && output[1] == OFFLINE && output[2] == OFFLINE && output[3] == OFFLINE && output[4] == OFFLINE){
+          nodetect_count++;
+          if(nodetect_count > nodetect_countmax){
+            state = END;
+          } 
+        }
+        else{
+          nodetect_count = 0;
+        }
+        break;
+    } 
+    if(state == END){
       state = END;
     }
     else if(output[2] == ONLINE){
