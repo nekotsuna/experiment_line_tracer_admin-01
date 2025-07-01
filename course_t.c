@@ -40,7 +40,7 @@ typedef enum STATE{
 Setting* setting();
 void start(PFD pfd);
 STATE initialize(PFD pfd, int straight, int sm, int wm, double sec);
-void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE lastt);
+void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state);
 void curve(PFD pfd, int lm, int rm, double sec);
 
 void main() {
@@ -141,11 +141,10 @@ STATE initialize(PFD pfd, int straight, int sm, int wm, double sec){
   return lastt;
 }
 
-void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE lastt){
+void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state){
   int output[5];
 
-  STATE state = LET;
-
+  STATE lastt;
 
   while(state != END){
     get_sensor(pfd, output);
