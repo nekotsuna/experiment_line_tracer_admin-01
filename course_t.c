@@ -215,6 +215,16 @@ void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, ST
 
 void curve(PFD pfd, int lm, int rm, double sec){
   int output[5];
+  int curve_detect;
+  int off_online_flag = 0;
+
+  get_sensor(pfd, output);
+  if(output[0] == ONLINE){
+    curve_detect = 0;
+  }
+  else if(output[4] == ONLINE){
+    curve_detect = 0;
+  }
 
   STATE state = CUV;
   motor_drive(pfd, lm, rm);
@@ -222,11 +232,14 @@ void curve(PFD pfd, int lm, int rm, double sec){
   while(state != END){
     get_sensor(pfd, output);
 
-    if(output[0] == ONLINE || output[4] == ONLINE){
+    if(off_online_flag == 1 && output[curve_detect] == ONLINE){
       state = END;
-
-      time_sleep(sec); 
     }
+    else if(off_online_flag == 0 && output[curve_detect] == OFFLINE){
+      off_online_flag = 1;
+    }
+
+    time_sleep(sec); 
   }     
 }
 
