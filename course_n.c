@@ -9,7 +9,6 @@ void main(){
   int output[5];
   pfd = init();
   motor_drive(pfd, 0, 0);
-  int S_flag = 0;
   int flag = 1;
 
   while(1){
@@ -37,11 +36,11 @@ void main(){
         flag = 2;//全力の右折
     }
      
-    else if(output[1] == 1 && S_flag == 1){
+    else if(output[1] == 1){
         flag = 3;//左に方向調整
     }
  
-    else if(output[3] == 1 && S_flag == 1){
+    else if(output[3] == 1){
         flag = 4;//右に方向調整
     }
  
