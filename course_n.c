@@ -33,7 +33,7 @@ void main(){
         flag = 1;//直進
     }
  
-    else if(output[3] == 1 && output[4] == 1 && S_flag == 1){
+    else if(output[3] == 1 && output[4] == 1){
         flag = 2;//全力の右折
     }
      
