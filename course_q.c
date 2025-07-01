@@ -63,14 +63,13 @@ void main() {
 	 time_sleep(0.01);
 	 if(output[1] == 1){
 	  motor_drive(pfd,0,0);
-	  time_sleep(10);
+	  time_sleep(0.01);
 	  printf("hureta\n");
 	  break;
 	 }
 	}
       }
 
-	    
     time_sleep(0.01);
    }
 	
