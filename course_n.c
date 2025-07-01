@@ -36,17 +36,17 @@ void main(){
 
     if(flag == 1){
         printf("1\n");
-        motor_drive(pfd, 13, 13);
+        motor_drive(pfd, 11, 11);
     }
 
     else if(flag == 3){
         printf("3\n");
-        motor_drive(pfd, 4, 10);
+        motor_drive(pfd, 3, 9);
     }
  
     else if(flag == 4){
         printf("4\n");
-        motor_drive(pfd, 10, 4);
+        motor_drive(pfd, 9, 3);
     }
  
     if(flag == 2){
