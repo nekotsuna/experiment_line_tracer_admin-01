@@ -14,6 +14,7 @@ void main() {
 	if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1){
 		printf("stop\n");
 		motor_drive(pfd,0,0);	
+		time_sleep(0.01);
 	}
 	else {
 	  printf("start\n");
@@ -29,16 +30,16 @@ void main() {
       }
       printf("\n");
   
-      motor_drive(pfd,10,10);
+      motor_drive(pfd,9,9);
 	
       if(output[3] == 1){
-	motor_drive(pfd,10,6);
+	motor_drive(pfd,9,5);
       }
       else if(output[1] == 1){
-	motor_drive(pfd,10,6);
+	motor_drive(pfd,5,9);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
-	motor_drive(pfd,10,10);
+	motor_drive(pfd,9,9);
       }
 
 
