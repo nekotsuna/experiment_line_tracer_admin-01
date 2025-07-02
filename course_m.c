@@ -86,11 +86,15 @@ void main() {
                 time_sleep(0.2);
             }
             */
+            
             for(int i =0; i < 20; i++){
             //printf("2");
-            if(i < 14)motor_drive(pfd, -5, 10);
-            else motor_drive(pfd, 9, 9);
-            time_sleep(0.05);
+            get_sensor(pfd, output);
+            if(output[0] == 0)motor_drive(pfd, -10, 10);
+            else {
+                motor_drive(pfd, 9, 9);
+                break;
+            }time_sleep(0.05);
             }
             MODE = 1;
         }
