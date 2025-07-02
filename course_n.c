@@ -51,7 +51,7 @@ void main(){
 	  
     if(flag == 1){
         printf("1\n");
-        motor_drive(pfd, 10, 10);
+        motor_drive(pfd, 11, 11);
     }
 
     else if(flag == 3){
@@ -69,7 +69,7 @@ void main(){
         for(int i=0; i<10; i++){
 	    get_sensor(pfd, output);
 	    if(output[1] == 0){
-		    motor_drive(pfd, 8, 0);
+		    motor_drive(pfd, 7, 0);
 	    }else{
 		    break;
 	    }
