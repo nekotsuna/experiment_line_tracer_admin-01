@@ -51,7 +51,7 @@ void main(){
 	  
     if(flag == 1){
         printf("1\n");
-        motor_drive(pfd, 16, 16);
+        motor_drive(pfd, 14, 14);
     }
 
     else if(flag == 3){
