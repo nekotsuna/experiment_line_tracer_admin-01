@@ -36,12 +36,16 @@ void main() {
       if(output[3] == 1 || output[4] == 1){
 	motor_drive(pfd,9,4);
       }
+      else if{
+	motor_druve(pfd,10,4);
+      }
       else if(output[1] == 1){
 	motor_drive(pfd,4,9);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
 	motor_drive(pfd,9,9);
       }
+
 
       if(output[0] == 1){
        if(flag == 0){ 
