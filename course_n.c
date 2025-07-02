@@ -69,7 +69,7 @@ void main(){
         for(int i=0; i<10; i++){
 	    get_sensor(pfd, output);
 	    if(output[1] == 0){
-		    motor_drive(pfd, 7, 0);
+		    motor_drive(pfd, 8, 0);
 	    }else{
 		    break;
 	    }
