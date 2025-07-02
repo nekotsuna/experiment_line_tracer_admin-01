@@ -133,6 +133,8 @@ void start(PFD pfd){
     get_sensor(pfd, output);
     if(output[0] == ONLINE && output[1] == ONLINE && output[2] == ONLINE && output[3] == ONLINE && output[4] == ONLINE) state = END;
   }
+
+  time_sleep(1);
 }
 
 STATE initialize(PFD pfd, int straight, int sm, int wm, double sec){
