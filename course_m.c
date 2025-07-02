@@ -25,11 +25,11 @@ void main() {
                 }else if (output[4] == 1) {
                     motor_drive(pfd, 11, 1);
                 } else if (output[3] == 1) {
-                    motor_drive(pfd, 11, 7);
+                    motor_drive(pfd, 11, 5);
                 } else if (output[2] == 1) {
                     motor_drive(pfd, 11, 11);
                 } else if (output[1] == 1) {
-                    motor_drive(pfd, 7, 11);
+                    motor_drive(pfd, 5, 11);
                 } else if(output[0] == 1){
                     motor_drive(pfd, 1, 11);
                 }
