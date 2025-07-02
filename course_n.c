@@ -56,12 +56,12 @@ void main(){
 
     else if(flag == 3){
         printf("3\n");
-        motor_drive(pfd, 5, 10);
+        motor_drive(pfd, 5, 9);
     }
  
     else if(flag == 4){
         printf("4\n");
-        motor_drive(pfd, 10, 5);
+        motor_drive(pfd, 9, 5);
     }
  
     if(flag == 2){
