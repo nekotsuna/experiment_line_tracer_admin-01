@@ -68,7 +68,7 @@ void main(){
         printf("2\n");
         for(int i=0; i<5; i++){
             motor_drive(pfd, 10, 0);
-            time_sleep(0.05);
+            time_sleep(0.04);
         }
     }
  
