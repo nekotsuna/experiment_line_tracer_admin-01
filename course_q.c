@@ -46,10 +46,10 @@ void main() {
 	motor_drive(pfd,9,10);
       }
       else if(output[2] == 1 && output[3] == 1){
-	motor_drive(pfd,9,4);
+	motor_drive(pfd,8,3);
       }
       else if(output[2] == 1 && output[1] == 1){
-	motor_drive(pfd,4,9);
+	motor_drive(pfd,3,8);
       }
 
 
