@@ -169,10 +169,14 @@ void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, ST
 
   while(state != END){
     get_sensor(pfd, output);
+    //print_sensor(pfd);
 
     switch(strterm){
       case ONCROSS:
-        if(output[0] == ONLINE || output[4] == ONLINE) state = END;
+        if(output[0] == ONLINE || output[4] == ONLINE){
+	  printf("out\n");
+	  //state = END;
+	}
         break;
 
       case NODETECT:
@@ -210,7 +214,7 @@ void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, ST
       }
     } 
 
-    printf("%d\n", state);
+    //printf("%d\n", state);
     time_sleep(sec); 
   }
 
