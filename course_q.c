@@ -31,7 +31,7 @@ void main() {
       }
       printf("\n");
   
-      motor_drive(pfd,6,10);
+      motor_drive(pfd,7,10);
 	
       if(output[3] == 1){
 	motor_drive(pfd,10,5);
@@ -40,10 +40,10 @@ void main() {
 	motor_drive(pfd,10,4);
       }
       else if(output[1] == 1){
-	motor_drive(pfd,5,10);
+	motor_drive(pfd,5,11);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
-	motor_drive(pfd,10,9);
+	motor_drive(pfd,9,9);
       }
 
 
