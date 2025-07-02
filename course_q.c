@@ -34,10 +34,10 @@ void main() {
       motor_drive(pfd,9,9);
 	
       if(output[3] == 1 || output[4] == 1){
-	motor_drive(pfd,10,5);
+	motor_drive(pfd,9,4);
       }
       else if(output[1] == 1){
-	motor_drive(pfd,5,10);
+	motor_drive(pfd,4,9);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
 	motor_drive(pfd,9,9);
@@ -60,7 +60,7 @@ void main() {
 	while(1){
 	 get_sensor(pfd,output);
 	 printf("kaiten\n");
-	 motor_drive(pfd,-9,9);
+	 motor_drive(pfd,-8,8);
 	 time_sleep(0.01);
 	 if(output[1] == 1){
 	  motor_drive(pfd,0,0);
