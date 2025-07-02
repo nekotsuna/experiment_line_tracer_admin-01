@@ -56,18 +56,18 @@ void main(){
 
     else if(flag == 3){
         printf("3\n");
-        motor_drive(pfd, 3, 9);
+        motor_drive(pfd, 4, 9);
     }
  
     else if(flag == 4){
         printf("4\n");
-        motor_drive(pfd, 9, 3);
+        motor_drive(pfd, 9, 4);
     }
  
     if(flag == 2){
         printf("2\n");
         for(int i=0; i<5; i++){
-            motor_drive(pfd, 11, 0);
+            motor_drive(pfd, 10, 0);
             time_sleep(0.05);
         }
     }
