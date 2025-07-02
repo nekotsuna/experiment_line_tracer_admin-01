@@ -31,29 +31,23 @@ void main() {
       }
       printf("\n");
   
-      motor_drive(pfd,9,10);
+      motor_drive(pfd,9,9);
 	
       if(output[3] == 1){
-	motor_drive(pfd,11,5);
+	motor_drive(pfd,10,4);
       }
       else if(output[4] == 1){
-	motor_drive(pfd,11,5);
+	motor_drive(pfd,10,4);
       }
       else if(output[1] == 1){
-	motor_drive(pfd,5,11);
+	motor_drive(pfd,4,10);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
-	motor_drive(pfd,9,10);
-      }
-      else if(output[2] == 1 && output[3] == 1){
-	motor_drive(pfd,7,5);
-      }
-      else if(output[2] == 1 && output[1] == 1){
-	motor_drive(pfd,5,7);
+	motor_drive(pfd,9,9);
       }
 
 
-      /*if(output[0] == 1){
+      if(output[0] == 1){
        if(flag == 0){ 
 	 while(1){ 
 	  get_sensor(pfd,output);
@@ -81,7 +75,7 @@ void main() {
 	}
 	flag++;
        }
-      }*/
+      }
 
     time_sleep(0.01);
    }
