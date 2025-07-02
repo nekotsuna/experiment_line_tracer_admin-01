@@ -66,7 +66,7 @@ void main(){
  
     if(flag == 2){
         printf("2\n");
-        for(int i=0; i<5; i++){
+        for(int i=0; i<4; i++){
             motor_drive(pfd, 10, 0);
             time_sleep(0.05);
         }
