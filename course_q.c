@@ -31,16 +31,16 @@ void main() {
       }
       printf("\n");
   
-      motor_drive(pfd,10,10);
+      motor_drive(pfd,9,9);
 	
       if(output[3] == 1 || output[4] == 1){
-	motor_drive(pfd,10,4);
+	motor_drive(pfd,10,5);
       }
       else if(output[1] == 1){
-	motor_drive(pfd,4,10);
+	motor_drive(pfd,5,10);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
-	motor_drive(pfd,10,10);
+	motor_drive(pfd,9,9);
       }
 
       if(output[0] == 1){
