@@ -31,7 +31,7 @@ void main() {
       }
       printf("\n");
   
-      motor_drive(pfd,9,10);
+      motor_drive(pfd,7,10);
 	
       if(output[3] == 1){
 	motor_drive(pfd,10,5);
