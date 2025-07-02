@@ -66,9 +66,14 @@ void main(){
  
     if(flag == 2){
         printf("2\n");
-        for(int i=0; i<5; i++){
-            motor_drive(pfd, 10, 0);
-            time_sleep(0.05);
+        for(int i=0; i<10; i++){
+	    get_sensor(pfd, output);
+	    if(output[1] == 0){
+		    motor_drive(pfd, 10, 0);
+	    }else{
+		    break;
+	    }
+	time_sleep(0.05);
         }
     }
  
