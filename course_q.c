@@ -83,7 +83,7 @@ void main() {
        }
       }*/
 
-    time_sleep(0.005);
+    time_sleep(0.01);
    }
 	
 }
