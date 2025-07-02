@@ -34,13 +34,13 @@ void main() {
       motor_drive(pfd,16,16);
 	
       if(output[3] == 1 || output[4] == 1){
-	motor_drive(pfd,16,10);
+	motor_drive(pfd,10,5);
       }
       else if(output[1] == 1){
-	motor_drive(pfd,10,16);
+	motor_drive(pfd,5,10);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
-	motor_drive(pfd,16,16);
+	motor_drive(pfd,10,10);
       }
 
       if(output[0] == 1){
