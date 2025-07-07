@@ -21,6 +21,7 @@
 #define BUFMAX 256
 
 typedef enum STATE{
+    UND,
     STR,
     LET,
     RIT,
@@ -38,6 +39,7 @@ void print_sensor(PFD pfd);
 void start(PFD pfd);
 STATE initialize(PFD pfd, int straight, int sm, int wm, double sec);
 void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, STRTERM strterm, int nodetect_countmax);
+void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double sec, STRTERM strterm, int nodetect_countmax);
 void curve(PFD pfd, int lm, int rm, double sec);
 void straight_oncross(PFD pfd, int sm, double sec);
 void uturn(PFD pfd, int lm, int rm, double sec); 
@@ -59,12 +61,14 @@ int main() {
   start(pfd);
   printf("out start\n");
 
-  motor_drive(pfd, settings[STRAIGHT], settings[STRAIGHT]);
-  STATE lastt = initialize(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], sec);
-  printf("out init\n");
+  //motor_drive(pfd, settings[STRAIGHT], settings[STRAIGHT]);
+  //STATE lastt = initialize(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], sec);
+  //printf("out init\n");
 
-  straight(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], sec, lastt, ONCROSS, 0);
-  printf("out straight\n");
+  //straight(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], sec, lastt, ONCROSS, 0);
+  //printf("out straight\n");
+
+  straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
 
   curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //right curve
 }
@@ -159,6 +163,74 @@ void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, ST
          motor_drive(pfd, sm, wm);
         }
         else if(lastt == RIT){
+         state = LET;
+         motor_drive(pfd, wm, sm);
+        }
+      }
+    } 
+
+    printf("%d\n", state);
+    time_sleep(sec); 
+  }
+
+}
+
+void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double sec, STRTERM strterm, int nodetect_countmax){
+  int output[5];
+  int nodetect_count = 0;
+
+  STATE state = STR;
+  STATE laststate = UND;
+
+  motor_drive(pfd, straight, straight);
+
+  while(state != END){
+    get_sensor(pfd, output);
+
+    switch(strterm){
+      case ONCROSS:
+        if(output[0] == ONLINE || output[4] == ONLINE) state = END;
+        break;
+
+      case NODETECT:
+        if(output[0] == OFFLINE && output[1] == OFFLINE && output[2] == OFFLINE && output[3] == OFFLINE && output[4] == OFFLINE){
+          nodetect_count++;
+          if(nodetect_count > nodetect_countmax){
+            state = END;
+          } 
+        }
+        else{
+          nodetect_count = 0;
+        }
+        break;
+    } 
+
+    if(state == END){
+      state = END;
+
+    }
+    else if(output[2] == ONLINE){
+      if(state != STR){
+        laststate = state;
+        state = STR;  
+        motor_drive(pfd, straight, straight); 
+      }
+    }
+    else if(output[1] == ONLINE){
+      state = LET;
+      motor_drive(pfd, swm, ssm);
+    }
+    else if(output[3] == ONLINE){
+      state = RIT;
+      motor_drive(pfd, ssm, swm);
+    }
+    else if(output[2] == OFFLINE){
+      if(state == STR){
+        if(laststate == LET){
+         state = RIT;
+         motor_drive(pfd, sm, wm);
+        }
+        else if(laststate == RIT){
          state = LET;
          motor_drive(pfd, wm, sm);
         }
