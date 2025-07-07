@@ -70,7 +70,11 @@ int main() {
 
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
 
+  stop(pfd, 2.0);
+
   curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //right curve
+
+  stop(pfd, 0);
 }
 
 
