@@ -57,11 +57,14 @@ int main() {
 
   start(pfd);
   printf("out start\n");
+
   motor_drive(pfd, settings[STRAIGHT], settings[STRAIGHT]);
   STATE lastt = initialize(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], sec);
   printf("out init\n");
+
   straight(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], sec, lastt, ONCROSS, 0);
   printf("out straight\n");
+
   curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //right curve
 }
 
@@ -169,15 +172,25 @@ void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, ST
 
 void curve(PFD pfd, int lm, int rm, double sec){
   int output[5];
-  int curve_detect;
-  int off_online_flag = 0;
+  int old_line_detect;
+  int line_detect;
+  int line_detect_count = 0;
 
   get_sensor(pfd, output);
-  if(output[0] == ONLINE){
-    curve_detect = 0;
+  if(output[2] == ONLINE){
+    old_line_detect = ONLINE;
+    line_detect = ONLINE;
+    line_detect_count = 1;
   }
-  else if(output[4] == ONLINE){
-    curve_detect = 0;
+  else{
+    old_line_detect = OFFLINE;
+    line_detect = OFFLINE;
+    if(output[1] == ONLINE){
+      line_detect_count = 1;
+    }
+    else if(output[3] == ONLINE){
+      line_detect_count = 0;
+    }
   }
 
   STATE state = CUV;
@@ -185,12 +198,18 @@ void curve(PFD pfd, int lm, int rm, double sec){
 
   while(state != END){
     get_sensor(pfd, output);
+  
+    old_line_detect = line_detect;
+    line_detect = output[2];
 
-    if(off_online_flag == 1 && output[curve_detect] == ONLINE){
-      state = END;
+    if(old_line_detect != line_detect){
+      if(line_detect == ONLINE){
+        line_detect_count++;
+      }
     }
-    else if(off_online_flag == 0 && output[curve_detect] == OFFLINE){
-      off_online_flag = 1;
+
+    if(line_detect_count >= 2){
+      state = END;
     }
 
     time_sleep(sec); 
