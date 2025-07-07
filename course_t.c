@@ -41,6 +41,7 @@ void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, ST
 void curve(PFD pfd, int lm, int rm, double sec);
 void straight_oncross(PFD pfd, int sm, double sec);
 void uturn(PFD pfd, int lm, int rm, double sec); 
+void stop(PFD pfd, double sec);
 
 int main() {
   PFD pfd;
@@ -244,4 +245,9 @@ void uturn(PFD pfd, int lm, int rm, double sec){
 
     time_sleep(sec); 
   }     
+}
+
+void stop(PFD pfd, double sec){
+  motor_drive(pfd, 0, 0);
+  time_sleep(sec);
 }
