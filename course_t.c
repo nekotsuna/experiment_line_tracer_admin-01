@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h> 
+#include "course_t_setter.h"
 
 #ifdef IN_RASPBERRYPI
 
@@ -19,15 +20,6 @@
 #define SETSMAX 6 
 #define BUFMAX 256
 
-typedef struct setting{
-  double sec;
-  int straight;
-  int bending_sm;
-  int bending_wm;
-  int curve_sm;
-  int curve_wm;
-} Setting;
-
 typedef enum STATE{
     STR,
     LET,
@@ -42,7 +34,6 @@ typedef enum STRTERM{
     NODETECT,
 } STRTERM;
 
-Setting* setting();
 void print_sensor(PFD pfd);
 void start(PFD pfd);
 STATE initialize(PFD pfd, int straight, int sm, int wm, double sec);
@@ -51,69 +42,29 @@ void curve(PFD pfd, int lm, int rm, double sec);
 void straight_oncross(PFD pfd, int sm, double sec);
 void uturn(PFD pfd, int lm, int rm, double sec); 
 
-void main() {
+int main() {
   PFD pfd;
   int output[5];
   pfd = init();
-  Setting* set = setting();
+  int settings[STRLEN];
+  setting(settings);
 
-  printf("sec = %f\n", set->sec);
-  printf("straight = %d\n", set->straight);
-  printf("bending sm = %d\n", set->bending_sm);
-  printf("bending wm = %d\n", set->bending_wm);
-  printf("curve sm = %d\n", set->curve_sm);
-  printf("curve wm = %d\n", set->curve_wm);
+  for(int i = 0; i < STRLEN; i++){ 
+    printf("%s = %d\n", str[i], settings[i]);
+  }
+
+  double sec = (double)settings[SEC] / (double)(SECDIV);
 
   start(pfd);
   printf("out start\n");
-  motor_drive(pfd, set->straight, set->straight);
-  STATE lastt = initialize(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec);
+  motor_drive(pfd, settings[STRAIGHT], settings[STRAIGHT]);
+  STATE lastt = initialize(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], sec);
   printf("out init\n");
-  straight(pfd, set->straight, set->bending_sm, set->bending_wm, set->sec, lastt, ONCROSS, 0);
+  straight(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], sec, lastt, ONCROSS, 0);
   printf("out straight\n");
-  curve(pfd, set->curve_sm, set->curve_wm, set->sec); //right curve
+  curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //right curve
 }
 
-Setting* setting(){
-  int sets[SETSMAX];
-  Setting* set = (Setting*)malloc(sizeof(Setting));
-
-  FILE* fp = fopen("course_t_setting.txt", "r");
-  if(fp == NULL){
-    printf("error: cannnot find file\n");
-    exit(1);
-  }
-
-  char c;
-  int i = 0;
-  int line = 0;
-  char buf[BUFMAX];
-  while((c = fgetc(fp)) != EOF){
-    if(line >= SETSMAX) break; 
-    
-    if(c == '\n'){
-      buf[i] = '\0';
-      sets[line] = atoi(buf);
-      i = 0;  
-      line++;
-    }
-    else{
-      buf[i] = c; 
-      i++;
-    }
-  }
-
-  set->sec = (double)sets[0] / (double)1000;
-  set->straight = sets[1];
-  set->bending_sm= sets[2];
-  set->bending_wm = sets[3];
-  set->curve_sm = sets[4];
-  set->curve_wm = sets[5];
-
-  fclose(fp);
-
-  return set;
-}
 
 void print_sensor(PFD pfd){
   int output[5];
