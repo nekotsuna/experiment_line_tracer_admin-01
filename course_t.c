@@ -69,14 +69,19 @@ int main() {
   //printf("out straight\n");
 
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
-
+  printf("out straight\n");
   //stop(pfd, 2.0);
 
   curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //right curve
+  printf("out curve\n");
+
+  stop(pfd, 0.5);
 
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, 0);
+  printf("out straight\n");
 
   uturn(pfd, settings[UTURN_SM], settings[UTURN_WM], settings[SEC]);
+  printf("out u-turn\n");
 
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
 
@@ -268,18 +273,18 @@ void curve(PFD pfd, int lm, int rm, double sec){
     old_line_detect = ONLINE;
     line_detect = ONLINE;
     line_detect_count = 1;
-    printf("output[2] == ONLINE");
+    printf("output[2] == ONLINE\n");
   }
   else{
     old_line_detect = OFFLINE;
     line_detect = OFFLINE;
     if(output[1] == ONLINE){
       line_detect_count = 1;
-      printf("output[1] == ONLINE");
+      printf("output[1] == ONLINE\n");
     }
     else if(output[3] == ONLINE){
       line_detect_count = 0;
-      printf("output[3] = ONLINE");
+      printf("output[3] = ONLINE\n");
     }
   }
 
