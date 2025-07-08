@@ -84,10 +84,9 @@ void main(){
 	    }
 	time_sleep(0.05);
         }
-	if(just_turned == 0){
-		flag_turn++;
-		just_turned = 1;
-	}
+	    
+	flag_turn++;
+	just_turned = 1;
 	
     }
  
