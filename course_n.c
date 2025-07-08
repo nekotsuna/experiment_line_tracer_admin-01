@@ -72,9 +72,11 @@ void main(){
 	    if(output[1] == 0){
 		    if(flag_right == 0 || flag_right == 1){
 			    motor_drive(pfd, 7, 0);
+			    printf("flag_right_%d\n" ,flag_right);
 		    }
 		    else{
 			    motor_drive(pfd, 0, 7);
+			    printf("flag_right_%d\n" ,flag_right);
 		    }
 	    }else{
 		    break;
