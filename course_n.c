@@ -84,7 +84,7 @@ void main(){
 	    }
 	time_sleep(0.05);
         }
-	if(int just_turned == 0){
+	if(just_turned == 0){
 		flag_turn++;
 		just_turned = 1;
 	}
