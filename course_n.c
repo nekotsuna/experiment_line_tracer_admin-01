@@ -10,7 +10,7 @@ void main(){
   pfd = init();
   motor_drive(pfd, 0, 0);
   int flag = 1;
-  int flag_right = 0;
+  int flag_turn = 0;
 	
   while(1){
     get_sensor(pfd,output);
@@ -66,20 +66,20 @@ void main(){
         for(int i=0; i<10; i++){
 	    get_sensor(pfd, output);
 	    if(output[1] == 0){
-		    if(flag_right == 0 || flag_right == 1){
+		    if(flag_turn == 0 || flag_turn == 1){
 			    motor_drive(pfd, 7, 0);
-			    printf("flag_right_%d\n" ,flag_right);
+			    printf("flag_turn_%d\n" ,flag_turn);
 		    }
 		    else{
 			    motor_drive(pfd, 0, 7);
-			    printf("flag_right_%d\n" ,flag_right);
+			    printf("flag_turn_%d\n" ,flag_turn);
 		    }
 	    }else{
 		    break;
 	    }
 	time_sleep(0.05);
         }
-	flag_right++;
+	flag_turn++;
     }
  
     time_sleep(0.01);
