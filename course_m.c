@@ -23,15 +23,15 @@ void main() {
                 if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1){
                     motor_drive(pfd, 0, 0);
                 }else if (output[4] == 1) {
-                    motor_drive(pfd, 11, 3);
+                    motor_drive(pfd, 10, 3);
                 } else if (output[3] == 1) {
-                    motor_drive(pfd, 9, 4);
+                    motor_drive(pfd, 8, 4);
                 } else if (output[2] == 1) {
-                    motor_drive(pfd, 7, 7);
+                    motor_drive(pfd, 6, 6);
                 } else if (output[1] == 1) {
-                    motor_drive(pfd, 4, 9);
+                    motor_drive(pfd, 4, 8);
                 } else if(output[0] == 1){
-                    motor_drive(pfd, 3, 15);
+                    motor_drive(pfd, 3, 10);
 
                 }
                 /*
