@@ -36,6 +36,9 @@ void main() {
       if(output[4] == 1){
 	motor_drive(pfd,12,4);
       }
+      else if(output[4] == 1 && output[3] == 1){
+	motor_drive(12,4);
+      }
       else if(output[3] == 1){
 	motor_drive(pfd,10,5);
       }
