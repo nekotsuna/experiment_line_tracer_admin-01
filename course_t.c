@@ -74,6 +74,12 @@ int main() {
 
   curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //right curve
 
+  straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, 0);
+
+  uturn(pfd, settings[UTURN_SM], settings[UTURN_WM], settings[SEC]);
+
+  straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
+
   stop(pfd, 0);
 }
 
