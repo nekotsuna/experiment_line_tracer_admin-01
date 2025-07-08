@@ -51,26 +51,22 @@ void main(){
 
 	  
     if(flag == 1){
-        printf("1\n");
         motor_drive(pfd, 10, 10);
     }
 
     else if(flag == 3){
-        printf("3\n");
         motor_drive(pfd, 4, 9);
     }
  
     else if(flag == 4){
-        printf("4\n");
         motor_drive(pfd, 9, 4);
     }
  
     if(flag == 2){
-        printf("2\n");
         for(int i=0; i<10; i++){
 	    get_sensor(pfd, output);
 	    if(output[1] == 0){
-		    if(flag_right == 0 || flag_right == 1){
+		    if(flag_right == 0 || flag_right == 1 || flag_right == 2 || flag_right == 3 || flag_right == 4){
 			    motor_drive(pfd, 7, 0);
 			    printf("flag_right_%d\n" ,flag_right);
 		    }
