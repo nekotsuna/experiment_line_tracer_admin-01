@@ -31,7 +31,7 @@ void main() {
                 } else if (output[1] == 1) {
                     motor_drive(pfd, 4, 9);
                 } else if(output[0] == 1){
-                    motor_drive(pfd, 3, 11);
+                    motor_drive(pfd, 3, 15);
 
                 }
                 /*
