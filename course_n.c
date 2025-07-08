@@ -11,7 +11,7 @@ void main(){
   motor_drive(pfd, 0, 0);
   int flag = 1;
   int flag_turn = 0;
-　int just_turned = 0;
+  int just_turned = 0;
 	
   while(1){
     get_sensor(pfd,output);
