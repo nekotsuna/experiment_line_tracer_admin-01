@@ -11,6 +11,7 @@ void main(){
   motor_drive(pfd, 0, 0);
   int flag = 1;
   int flag_turn = 0;
+　int just_turned = 0;
 	
   while(1){
     get_sensor(pfd,output);
@@ -31,18 +32,22 @@ void main(){
    
     if((output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0) || (output[0] == 0 && output[1] == 0 && output[2] == 1 && output[3] == 0 && output[4] == 0)){
         flag = 1;//直進
+	just_turned = 0;
     }
  
     else if(output[3] == 1 && output[4] == 1){
         flag = 2;//全力の右折
+	just_turned = 0;
     }
      
     else if(output[1] == 1){
         flag = 3;//左に方向調整
+	just_turned = 0;
     }
  
     else if(output[3] == 1){
         flag = 4;//右に方向調整
+	just_turned = 0;
     }
  
     else{
@@ -79,7 +84,11 @@ void main(){
 	    }
 	time_sleep(0.05);
         }
-	flag_turn++;
+	if(int just_turned == 0){
+		flag_turn++;
+		just_turned = 1;
+	}
+	
     }
  
     time_sleep(0.01);
