@@ -10,7 +10,8 @@ void main(){
   pfd = init();
   motor_drive(pfd, 0, 0);
   int flag = 1;
-
+  int flag_right = 0;
+	
   while(1){
     get_sensor(pfd,output);
     if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1){
@@ -69,18 +70,20 @@ void main(){
         for(int i=0; i<10; i++){
 	    get_sensor(pfd, output);
 	    if(output[1] == 0){
-		    motor_drive(pfd, 0, 7);
+		    if(flag_right == 0 || flag_right == 1){
+			    motor_drive(pfd, 7, 0);
+		    }
+		    else{
+			    motor_drive(pfd, 0, 7);
+		    }
 	    }else{
 		    break;
 	    }
 	time_sleep(0.05);
         }
+	flag_right++;
     }
  
     time_sleep(0.01);
   }
 }
-
-
-
-//完成
