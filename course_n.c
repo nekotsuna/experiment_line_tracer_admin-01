@@ -66,7 +66,7 @@ void main(){
         for(int i=0; i<10; i++){
 	    get_sensor(pfd, output);
 	    if(output[1] == 0){
-		    if(flag_right == 0 || flag_right == 1 || flag_right == 2 || flag_right == 3 || flag_right == 4){
+		    if(flag_right == 0 || flag_right == 1 || flag_right == 2){
 			    motor_drive(pfd, 7, 0);
 			    printf("flag_right_%d\n" ,flag_right);
 		    }
