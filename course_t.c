@@ -218,30 +218,34 @@ void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double
         laststate = state;
         state = STR;  
         motor_drive(pfd, straight, straight); 
+        printf("straight\n");
       }
     }
     else if(output[1] == ONLINE){
       state = LET;
       motor_drive(pfd, swm, ssm);
+      printf("SLET\n");
     }
     else if(output[3] == ONLINE){
       state = RIT;
       motor_drive(pfd, ssm, swm);
+      printf("SRIT\n");
     }
     else if(output[2] == OFFLINE){
       if(state == STR){
         if(laststate == LET){
          state = RIT;
          motor_drive(pfd, sm, wm);
+         printf("RIT\n");
         }
         else if(laststate == RIT){
          state = LET;
          motor_drive(pfd, wm, sm);
+         printf("LET\n");
         }
       }
     } 
 
-    printf("%d\n", state);
     time_sleep(sec); 
   }
 
@@ -258,15 +262,18 @@ void curve(PFD pfd, int lm, int rm, double sec){
     old_line_detect = ONLINE;
     line_detect = ONLINE;
     line_detect_count = 1;
+    printf("output[2] == ONLINE");
   }
   else{
     old_line_detect = OFFLINE;
     line_detect = OFFLINE;
     if(output[1] == ONLINE){
       line_detect_count = 1;
+      printf("output[1] == ONLINE");
     }
     else if(output[3] == ONLINE){
       line_detect_count = 0;
+      printf("output[3] = ONLINE");
     }
   }
 
@@ -282,6 +289,7 @@ void curve(PFD pfd, int lm, int rm, double sec){
     if(old_line_detect != line_detect){
       if(line_detect == ONLINE){
         line_detect_count++;
+        printf("line detected\n");
       }
     }
 
