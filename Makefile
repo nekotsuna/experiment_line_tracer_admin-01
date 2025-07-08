@@ -40,8 +40,5 @@ course_q: course_q.o
 	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
 
 course_t: course_t.c course_t_setter.c course_t_setter.h
-	gcc -Wall -pthread -o $@ course_t.c $(PIFLAG) -lrt
-	gcc -Wall -pthread -o $@ course_t_setter.c $(PIFLAG) -lrt
-
-course_t_setter: course_t_setter.o
-	gcc -Wall -pthread -o $@ $^ $(PIFLAG) -lrt
+	gcc -Wall -pthread -o course_t course_t.c $(PIFLAG) -lrt
+	gcc -Wall -pthread -o course_t_setter course_t_setter.c $(PIFLAG) -lrt
