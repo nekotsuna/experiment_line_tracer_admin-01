@@ -135,7 +135,7 @@ void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, ST
 
     switch(strterm){
       case ONCROSS:
-        if(output[0] == ONLINE || output[4] == ONLINE) state = END;
+        if(output[0] == ONLINE && output[4] == ONLINE) state = END;
         break;
 
       case NODETECT:
