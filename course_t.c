@@ -25,6 +25,8 @@ typedef enum STATE{
     STR,
     LET,
     RIT,
+    SLET,
+    SRIT,
     CUV,
     STP,
     END,
@@ -234,14 +236,14 @@ void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double
     }
     else if(output[1] == ONLINE){
       if(state != SLET){
-        state = LET;
+        state = SLET;
         motor_drive(pfd, swm, ssm);
         printf("SLET\n");
       }
     }
     else if(output[3] == ONLINE){
-      if(state != STR){
-        state = RIT;
+      if(state != SRIT){
+        state = SRIT;
         motor_drive(pfd, ssm, swm);
         printf("SRIT\n");
       }
