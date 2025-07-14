@@ -73,12 +73,12 @@ void main(){
 	    if(output[1] == 0){
 		    if(flag_turn == 0 || flag_turn == 1){
 			    motor_drive(pfd, 7, 0);
-			    printf("flag_turn_%d\n" ,flag_turn);
 		    }
 		    else{
 			    motor_drive(pfd, 0, 7);
-			    printf("flag_turn_%d\n" ,flag_turn);
 		    }
+		    
+		    printf("flag_turn_%d\n" ,flag_turn);
 	    }else{
 		    break;
 	    }
