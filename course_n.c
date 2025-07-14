@@ -79,8 +79,6 @@ void main(){
 		  flag_turn++;
 		  continue;// 右折完了、次のループへ
 	  }
-	  flag_turn++;
-	  just_turned = 1;
   
  
     time_sleep(0.01);
