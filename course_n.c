@@ -68,22 +68,20 @@ void main(){
     }
  
     if(flag == 2){
-        for(int i=0; i<11; i++){
-	    get_sensor(pfd, output);
-	    if(output[1] == 0){
-		    if(flag_turn == 0 || flag_turn == 1){
-			    motor_drive(pfd, 7, 0);
-		    }
-		    else{
-			    motor_drive(pfd, 0, 7);
-		    }
-		    
-		    printf("flag_turn_%d\n" ,flag_turn);
-	    }else{
-		    break;
-	    }
-	time_sleep(0.05);
-        }
+    　　int cnt = 0;
+    　　while(cnt < 20){          // 安全上限：20×0.03 ≒ 0.6 s
+        　　motor_drive(pfd, 6, 0);   // ← 少し遅めに
+        　　time_sleep(0.03);
+
+        　　get_sensor(pfd, output);
+        　　if(output[1] || output[2] || output[3]){
+            　　break;             // ラインを検出したら終了
+        　　}
+        cnt++;
+    }
+    flag_turn++;
+    continue;                  // 右折完了、次のループへ
+}
 	    
 	flag_turn++;
 	just_turned = 1;
