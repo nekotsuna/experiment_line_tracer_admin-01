@@ -77,12 +77,12 @@ int main() {
   curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //right curve
   printf("out curve\n");
 
-  stop(pfd, 0.5);
+  //stop(pfd, 0.5);
 
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
   printf("out straight\n");
 
-  uturn(pfd, settings[UTURN_SM], settings[UTURN_WM], settings[SEC]);
+  uturn(pfd, settings[UTURN_SM], settings[UTURN_WM], sec);
   printf("out u-turn\n");
 
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
