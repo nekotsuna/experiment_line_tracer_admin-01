@@ -31,25 +31,53 @@ void main() {
       }
       printf("\n");
   
-      motor_drive(pfd,9,10);
+      motor_drive(pfd,9,9);
 	
-      if(output[3] == 1){
-	motor_drive(pfd,10,5);
+      if(output[4] == 1){
+	motor_drive(pfd,12,2);
       }
-      else if(output[4] == 1){
+      else if(output[4] == 1 && output[3] == 1){
+	motor_drive(pfd,12,2);
+      }
+      else if(output[3] == 1){
 	motor_drive(pfd,10,5);
       }
       else if(output[1] == 1){
 	motor_drive(pfd,5,10);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
-	motor_drive(pfd,9,10);
+	motor_drive(pfd,9,9);
       }
-      else if(output[2] == 1 && output[3] == 1){
-	motor_drive(pfd,6,4);
-      }
-      else if(output[2] == 1 && output[1] == 1){
-	motor_drive(pfd,4,6);
+
+
+      if(output[0] == 1){
+       if(flag == 0){ 
+	 while(1){ 
+	  get_sensor(pfd,output);
+	  motor_drive(pfd,9,9); 
+	  printf("massugu\n");
+	  time_sleep(0.01);
+	 
+	  if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0){
+	   printf("subete zero\n");
+	   break;
+	  }
+	 }
+
+	while(1){
+	 get_sensor(pfd,output);
+	 printf("kaiten\n");
+	 motor_drive(pfd,-8,8);
+	 time_sleep(0.01);
+	 if(output[1] == 1){
+	  motor_drive(pfd,0,0);
+	  time_sleep(0.01);
+	  printf("hureta\n");
+	  break;
+	 }
+	}
+	flag++;
+       }
       }
 
     time_sleep(0.01);
