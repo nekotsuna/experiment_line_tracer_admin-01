@@ -91,3 +91,5 @@ void main(){
     time_sleep(0.01);
   }
 }
+
+//今度こそ完成
