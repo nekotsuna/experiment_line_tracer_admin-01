@@ -68,7 +68,7 @@ void main(){
     }
  
     if(flag == 2){
-        for(int i=0; i<9; i++){
+        for(int i=0; i<8; i++){
 	    get_sensor(pfd, output);
 	    if(output[1] == 0){
 		    if(flag_turn == 0 || flag_turn == 1){
