@@ -233,14 +233,18 @@ void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double
       }
     }
     else if(output[1] == ONLINE){
-      state = LET;
-      motor_drive(pfd, swm, ssm);
-      printf("SLET\n");
+      if(state != SLET){
+        state = LET;
+        motor_drive(pfd, swm, ssm);
+        printf("SLET\n");
+      }
     }
     else if(output[3] == ONLINE){
-      state = RIT;
-      motor_drive(pfd, ssm, swm);
-      printf("SRIT\n");
+      if(state != STR){
+        state = RIT;
+        motor_drive(pfd, ssm, swm);
+        printf("SRIT\n");
+      }
     }
     else if(output[2] == OFFLINE){
       if(state == STR){
