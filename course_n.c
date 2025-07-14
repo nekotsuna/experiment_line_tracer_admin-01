@@ -81,7 +81,7 @@ void main(){
 	  }
 	  flag_turn++;
 	  just_turned = 1;
-  }
+  
  
     time_sleep(0.01);
   }
