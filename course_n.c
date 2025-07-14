@@ -66,19 +66,26 @@ void main(){
     else if(flag == 4){
         motor_drive(pfd, 9, 4);
     }
-	  if(flag == 2){
-		  int cnt = 0;while(cnt < 20){
-			  motor_drive(pfd, 6, 0);// ← 少し遅めに
-			  time_sleep(0.03);
-			  get_sensor(pfd, output);
-			  if(output[1] || output[2] || output[3]){
-				  break;// ラインを検出したら終了
-			  }
-			  cnt++;
-		  }
-		  flag_turn++;
-		  continue;// 右折完了、次のループへ
-	  }
+　　if(flag == 2){
+    int cnt = 0, detected = 0;
+    int base_power = (flag_turn == 0) ? 8 : 6;  // 初回だけ強め
+    while(cnt < 30){
+        motor_drive(pfd, base_power, 0);
+        time_sleep(0.03);
+        get_sensor(pfd, output);
+
+        if(output[1] || output[2] || output[3]){
+            detected++;
+            if(detected >= 3) break;  // 0.1秒以上検出し続けたら完了
+        } else {
+            detected = 0;
+        }
+        cnt++;
+    }
+    flag_turn++;
+    continue;
+}
+
   
  
     time_sleep(0.01);
