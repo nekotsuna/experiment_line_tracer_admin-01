@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h> 
 
-#define STRLEN 10 
+#define STRLEN 11
 #define BUFMAX 256
 #define SECDIV 1000
 
@@ -16,6 +16,7 @@ typedef enum setting_index{
   CURVE_WM,
   UTURN_SM,
   UTURN_WM,
+  UTURN_SEC,
 } SettingIndex;
 
 const char* str[STRLEN] = { \
@@ -29,6 +30,7 @@ const char* str[STRLEN] = { \
      "curve_wm", \
      "uturn_sm", \
      "uturn_wm", \
+     "uturn_sec", \
 };
 
 void setting(int settings[]);
