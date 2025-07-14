@@ -66,27 +66,22 @@ void main(){
     else if(flag == 4){
         motor_drive(pfd, 9, 4);
     }
- 
-    if(flag == 2){
-    　　int cnt = 0;
-    　　while(cnt < 20){          // 安全上限：20×0.03 ≒ 0.6 s
-        　　motor_drive(pfd, 6, 0);   // ← 少し遅めに
-        　　time_sleep(0.03);
-
-        　　get_sensor(pfd, output);
-        　　if(output[1] || output[2] || output[3]){
-            　　break;             // ラインを検出したら終了
-        　　}
-        cnt++;
-    }
-    flag_turn++;
-    continue;                  // 右折完了、次のループへ
-}
-	    
-	flag_turn++;
-	just_turned = 1;
-	
-    }
+	  if(flag == 2){
+		  int cnt = 0;while(cnt < 20){
+			  motor_drive(pfd, 6, 0);// ← 少し遅めに
+			  time_sleep(0.03);
+			  get_sensor(pfd, output);
+			  if(output[1] || output[2] || output[3]){
+				  break;// ラインを検出したら終了
+			  }
+			  cnt++;
+		  }
+		  flag_turn++;
+		  continue;// 右折完了、次のループへ
+	  }
+	  flag_turn++;
+	  just_turned = 1;
+  }
  
     time_sleep(0.01);
   }
