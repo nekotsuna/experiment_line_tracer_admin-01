@@ -66,7 +66,7 @@ int main() {
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
   printf("out straight\n");
 
-  curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //right curve
+  curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //first curve
   printf("out curve\n");
 
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
@@ -78,7 +78,7 @@ int main() {
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
   printf("out straight\n");
 
-  curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //right curve
+  curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //second curve
   printf("out curve\n");
 
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
@@ -90,7 +90,7 @@ int main() {
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
   printf("out straight\n");
 
-  curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //right curve
+  curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //third curve
   printf("out curve\n");
 
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
@@ -102,7 +102,7 @@ int main() {
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
   printf("out straight\n");
 
-  curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //right curve
+  curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //fourth curve
   printf("out curve\n");
 
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
@@ -252,21 +252,21 @@ void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double
         laststate = state;
         state = STR;  
         motor_drive(pfd, straight, straight); 
-        printf("straight\n");
+        //printf("straight\n");
       }
     }
     else if(output[1] == ONLINE){
       if(state != SLET){
         state = SLET;
         motor_drive(pfd, swm, ssm);
-        printf("SLET\n");
+        //printf("SLET\n");
       }
     }
     else if(output[3] == ONLINE){
       if(state != SRIT){
         state = SRIT;
         motor_drive(pfd, ssm, swm);
-        printf("SRIT\n");
+        //printf("SRIT\n");
       }
     }
     else if(output[2] == OFFLINE){
@@ -274,12 +274,12 @@ void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double
         if(laststate == LET){
          state = RIT;
          motor_drive(pfd, sm, wm);
-         printf("RIT\n");
+         //printf("RIT\n");
         }
         else if(laststate == RIT){
          state = LET;
          motor_drive(pfd, wm, sm);
-         printf("LET\n");
+         //printf("LET\n");
         }
       }
     } 
