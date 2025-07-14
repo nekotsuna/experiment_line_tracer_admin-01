@@ -66,7 +66,7 @@ void main(){
     else if(flag == 4){
         motor_drive(pfd, 9, 4);
     }
-　　if(flag == 2){
+    if(flag == 2){
     int cnt = 0, detected = 0;
     int base_power = (flag_turn == 0) ? 8 : 6;  // 初回だけ強め
     while(cnt < 30){
