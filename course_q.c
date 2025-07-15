@@ -28,8 +28,6 @@ void main() {
            printf("%d ", output[i]);
       }
       printf("\n");
-  
-      motor_drive(pfd,9,9);
 	
       if(output[4] == 1){
 	motor_drive(pfd,12,2);
@@ -38,13 +36,13 @@ void main() {
 	motor_drive(pfd,12,2);
       }
       else if(output[3] == 1){
-	motor_drive(pfd,11,6);
+	motor_drive(pfd,12,6);
       }
       else if(output[1] == 1){
-	motor_drive(pfd,6,11);
+	motor_drive(pfd,6,12);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0 || output[2] == 1){
-	motor_drive(pfd,10,10);
+	motor_drive(pfd,12,12);
       }
 
 
@@ -57,13 +55,13 @@ void main() {
 	}
 
         if(output[3] == 1){
-	 motor_drive(pfd,8,5);
+	 motor_drive(pfd,9,5);
         }
         else if(output[1] == 1){
 	 motor_drive(pfd,5,8);
         }
         else if(output[1] == 0 && output[2] == 0 && output[3] == 0 || output[2] == 1){
-	 motor_drive(pfd,8,8);
+	 motor_drive(pfd,9,8);
         }
 
 	time_sleep(0.01);
