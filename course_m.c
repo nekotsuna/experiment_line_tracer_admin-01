@@ -47,7 +47,7 @@ void main() {
                     */
                     if(output[0]==0&&output[1]==0&&output[2]==0&&output[3]==0&&output[4]==0){
                     check++;
-                    if(check == 5){
+                    if(check == 6){
                         MODE = 2;
                         check = 0;
                         break;
@@ -91,7 +91,7 @@ void main() {
             for(int i =0; i < 20; i++){
             //printf("2");
             get_sensor(pfd, output);
-            if(output[0] == 0)motor_drive(pfd, -12, 12);
+            if(output[2] == 0)motor_drive(pfd, -12, 12);
             else {
                 motor_drive(pfd, 9, 9);
                 break;
