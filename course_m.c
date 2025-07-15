@@ -91,7 +91,7 @@ void main() {
             for(int i =0; i < 20; i++){
             //printf("2");
             get_sensor(pfd, output);
-            if(output[0] == 0)motor_drive(pfd, -9, 9);
+            if(output[0] == 0)motor_drive(pfd, -12, 8);
             else {
                 motor_drive(pfd, 9, 9);
                 break;
