@@ -38,13 +38,13 @@ void main() {
 	motor_drive(pfd,12,2);
       }
       else if(output[3] == 1){
-	motor_drive(pfd,10,5);
+	motor_drive(pfd,11,6);
       }
       else if(output[1] == 1){
-	motor_drive(pfd,5,10);
+	motor_drive(pfd,6,11);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0 || output[2] == 1){
-	motor_drive(pfd,9,9);
+	motor_drive(pfd,10,10);
       }
 
 
@@ -57,13 +57,13 @@ void main() {
 	}
 
         if(output[3] == 1){
-	 motor_drive(pfd,7,4);
+	 motor_drive(pfd,8,5);
         }
         else if(output[1] == 1){
-	 motor_drive(pfd,4,7);
+	 motor_drive(pfd,5,8);
         }
         else if(output[1] == 0 && output[2] == 0 && output[3] == 0 || output[2] == 1){
-	 motor_drive(pfd,7,7);
+	 motor_drive(pfd,8,8);
         }
 
 	time_sleep(0.01);
@@ -71,7 +71,7 @@ void main() {
 
 	while(1){
 	 get_sensor(pfd,output);
-	 motor_drive(pfd,9,10);
+	 motor_drive(pfd,8,9);
 	 time_sleep(0.01);
 	}
       }
