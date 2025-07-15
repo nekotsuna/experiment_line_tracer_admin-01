@@ -71,7 +71,7 @@ void main() {
 
 	while(1){
 	 get_sensor(pfd,output);
-	 motor_drive(pfd,8,9);
+	 motor_drive(pfd,14,16);
 	 time_sleep(0.01);
 	}
       }
