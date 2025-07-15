@@ -56,15 +56,15 @@ void main(){
 
 	  
     if(flag == 1){
-        motor_drive(pfd, 13, 13);
+        motor_drive(pfd, 12, 12);
     }
 
     else if(flag == 3){
-        motor_drive(pfd, 5, 10);
+        motor_drive(pfd, 4, 9);
     }
  
     else if(flag == 4){
-        motor_drive(pfd, 10, 5);
+        motor_drive(pfd, 9, 4);
     }
     if(flag == 2){
     int cnt = 0, detected = 0;
