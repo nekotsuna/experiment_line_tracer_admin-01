@@ -25,11 +25,11 @@ void main() {
                 }else if (output[4] == 1) {
                     motor_drive(pfd, 12, 3);
                 } else if (output[3] == 1) {
-                    motor_drive(pfd, 9, 4);
+                    motor_drive(pfd, 7, 4);
                 } else if (output[2] == 1) {
                     motor_drive(pfd, 6, 6);
                 } else if (output[1] == 1) {
-                    motor_drive(pfd, 4, 9);
+                    motor_drive(pfd, 4, 7);
                 } else if(output[0] == 1){
                     motor_drive(pfd, 3, 12);
 
@@ -56,7 +56,7 @@ void main() {
                     check = 0;
                 }
 
-                time_sleep(0.03);
+                time_sleep(0.025);
             }
         }
         else if (MODE == 2) {
@@ -91,11 +91,11 @@ void main() {
             for(int i =0; i < 20; i++){
             //printf("2");
             get_sensor(pfd, output);
-            if(output[0] == 0)motor_drive(pfd, -12, 8);
+            if(output[1 == 0)motor_drive(pfd, -12, 12);
             else {
                 motor_drive(pfd, 9, 9);
                 break;
-            }time_sleep(0.05);
+            }time_sleep(0.02);
             }
             MODE = 1;
         }
