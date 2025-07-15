@@ -63,7 +63,26 @@ int main() {
   start(pfd);
   printf("out start\n");
 
-  straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
+  for(int i = 0; i < 100; i++){
+    straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
+    printf("out straight\n");
+
+    curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //first curve
+    printf("out curve\n");
+
+    straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
+    printf("out straight\n");
+
+    if(i == 3){
+      printf("goal\n");
+      stop(pfd, 10);
+    }
+
+    uturn(pfd, settings[UTURN_SM], settings[UTURN_WM], sec);
+    printf("out u-turn\n");
+  }
+
+  /*straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
   printf("out straight\n");
 
   curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec); //first curve
@@ -106,7 +125,7 @@ int main() {
   printf("out curve\n");
 
   straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
-  printf("out straight\n");
+  printf("out straight\n");*/
 
   stop(pfd, 0);
 }
