@@ -150,6 +150,8 @@ void start(PFD pfd){
     if(output[0] == ONLINE && output[1] == ONLINE && output[2] == ONLINE && output[3] == ONLINE && output[4] == ONLINE) state = END;
   }
 
+  state = STP;
+
   while(state != END){
     get_sensor(pfd, output);
     if(output[0] == OFFLINE && output[1] == OFFLINE && output[2] == ONLINE && output[3] == OFFLINE && output[4] == OFFLINE) state = END;
