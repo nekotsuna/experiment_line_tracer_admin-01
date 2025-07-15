@@ -56,7 +56,7 @@ void main(){
 
 	  
     if(flag == 1){
-        motor_drive(pfd, 12, 12);
+        motor_drive(pfd, 13, 13);
     }
 
     else if(flag == 3){
