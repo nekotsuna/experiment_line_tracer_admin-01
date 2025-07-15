@@ -29,17 +29,12 @@ void main() {
       }
       printf("\n");
 	
-      if(output[4] == 1){
-	motor_drive(pfd,12,2);
-      }
-      else if(output[4] == 1 && output[3] == 1){
-	motor_drive(pfd,12,2);
-      }
-      else if(output[3] == 1){
-	motor_drive(pfd,12,7);
+      
+      if(output[3] == 1){
+	motor_drive(pfd,11,7);
       }
       else if(output[1] == 1){
-	motor_drive(pfd,7,12);
+	motor_drive(pfd,7,11);
       }
       else if(output[1] == 0 && output[2] == 0 && output[3] == 0 || output[2] == 1){
 	motor_drive(pfd,12,12);
