@@ -67,7 +67,7 @@ int main() {
     straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
     printf("out straight\n");
 
-    curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec, settings[CURVE_INIT_SEC]); //first curve
+    curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec, settings[CURVE_INIT_SEC] / settings[SEC]); //first curve
     printf("out curve\n");
 
     straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
