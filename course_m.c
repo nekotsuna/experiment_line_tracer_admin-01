@@ -49,7 +49,7 @@ void main() {
                 if(output[0] == 1 && output[1] == 1 && output[2] == 1 && output[3] == 1 && output[4] == 1){
                     motor_drive(pfd, 0, 0);
                 }else if (output[0] == 1) {
-                    motor_drive(pfd, 16,16);
+                    motor_drive(pfd, 16,-16);
                 } else if (output[1] == 1) {
                     motor_drive(pfd, 16, -8);
                 } else if (output[2] == 1) {
@@ -59,7 +59,7 @@ void main() {
                 } else if(output[4] == 1){
                     motor_drive(pfd, 16, 8);
                 }else{
-                    motor_drive(pfd,6,16);
+                    motor_drive(pfd,0,16);
                 }
 
                 /*
