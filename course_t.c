@@ -276,6 +276,7 @@ void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double
     }
     else if(output[2] == ONLINE){
       if(state != STR){
+	time_sleep(0.05);
         laststate = state;
         state = STR;  
         motor_drive(pfd, straight, straight); 
@@ -345,7 +346,6 @@ void curve(PFD pfd, int lm, int rm, int strm, double sec, int strsec,int initial
   STATE state = STR;
   motor_drive(pfd, strm, strm); 
   for(int i = 0; i < strsec; i++) time_sleep(sec);
-
 
   state = CUV;
   motor_drive(pfd, lm, rm);
