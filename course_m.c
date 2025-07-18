@@ -75,7 +75,7 @@ void main() {
                 }
                 */
 
-                time_sleep(0.025);
+                time_sleep(0.02);
             }
         }
         else if (MODE == 2) {
