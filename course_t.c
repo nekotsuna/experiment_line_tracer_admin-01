@@ -42,7 +42,7 @@ void start(PFD pfd);
 STATE initialize(PFD pfd, int straight, int sm, int wm, double sec);
 void straight(PFD pfd, int straight, int sm, int wm, double sec, STATE state, STRTERM strterm, int nodetect_countmax);
 void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double sec, STRTERM strterm, int nodetect_countmax);
-void curve(PFD pfd, int lm, int rm, double sec, int initialsecmax);
+void curve(PFD pfd, int lm, int rm, int strm, double sec, int strsec, int initialsecmax);
 void straight_oncross(PFD pfd, int sm, double sec);
 void uturn(PFD pfd, int lm, int rm, double sec); 
 void stop(PFD pfd, double sec);
@@ -67,7 +67,7 @@ int main() {
     straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
     printf("out straight\n");
 
-    curve(pfd, settings[CURVE_SM], settings[CURVE_WM], sec, settings[CURVE_INIT_SEC] / settings[SEC]); //first curve
+    curve(pfd, settings[CURVE_SM], settings[CURVE_WM], settings[CURVE_STRM], sec, settings[CURVE_STR_SEC] / settings[SEC], settings[CURVE_INIT_SEC] / settings[SEC]); //first curve
     printf("out curve\n");
 
     straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
@@ -254,6 +254,7 @@ void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double
     switch(strterm){
       case ONCROSS:
         if(output[0] == ONLINE || output[4] == ONLINE) state = END;
+
         break;
 
       case NODETECT:
@@ -315,7 +316,7 @@ void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double
 
 }
 
-void curve(PFD pfd, int lm, int rm, double sec, int initialsecmax){
+void curve(PFD pfd, int lm, int rm, int strm, double sec, int strsec,int initialsecmax){
   int output[5];
   //int old_line_detect;
   //int line_detect;
@@ -341,7 +342,12 @@ void curve(PFD pfd, int lm, int rm, double sec, int initialsecmax){
     }
   }
 
-  STATE state = CUV;
+  STATE state = STR;
+  motor_drive(pfd, strm, strm); 
+  for(int i = 0; i < strsec; i++) time_sleep(sec);
+
+
+  state = CUV;
   motor_drive(pfd, lm, rm);
 
   int initialsec = 0;
