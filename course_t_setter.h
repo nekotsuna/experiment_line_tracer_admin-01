@@ -32,8 +32,8 @@ const char* str[STRLEN] = { \
      "curve_sm", \
      "curve_wm", \
      "curve_strm", \
-     "curve_init_sec", \
      "curve_str_sec", \
+     "curve_init_sec", \
      "uturn_sm", \
      "uturn_wm", \
      "uturn_sec", \
