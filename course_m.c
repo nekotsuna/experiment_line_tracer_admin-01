@@ -59,7 +59,7 @@ void main() {
                 } else if(output[4] == 1){
                     motor_drive(pfd, 16, 8);
                 }else{
-                    motor_drive(pfd,0,16);
+                    motor_drive(pfd,6,16);
                 }
 
                 /*
