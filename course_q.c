@@ -24,10 +24,7 @@ void main() {
     while(1){
       get_sensor(pfd,output);
 	
-        if(output[3] == 1 || output[4] == 1){
-	 motor_drive(pfd,16,15);
-        }
-        else if(output[0] == 1 || output[1] == 1){
+	if(output[0] == 1 || output[1] == 1){
 	 motor_drive(pfd,15,16);
         }
 	else if(output[2] == 1){
