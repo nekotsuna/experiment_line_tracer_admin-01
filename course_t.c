@@ -319,16 +319,16 @@ void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double
     else if(output[2] == ONLINE){
       if(state != STR){
         straight_count = 0;
-	      //time_sleep(0.05);
+	      time_sleep(0.05);
         laststate = state;
         state = STR;  
         motor_drive(pfd, straight, straight); 
         printf("straight\n");
       } else {
-	      /*if(straight_count % 100 == 0){
+	      if(straight_count % 100 == 0 && straight_count <= 8){
 	          motor_drive(pfd, straight + straight_up, straight + straight_up);
             straight_up++;
-        }*/
+        }
       }
       straight_count++;
     }
