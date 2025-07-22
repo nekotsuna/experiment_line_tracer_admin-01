@@ -302,7 +302,7 @@ void straight_v2(PFD pfd, int straight, int sm, int wm, int ssm, int swm, double
       case NODETECT:
         if(output[0] == OFFLINE && output[1] == OFFLINE && output[2] == OFFLINE && output[3] == OFFLINE && output[4] == OFFLINE){
           nodetect_count++;
-          if(nodetect_count > nodetect_countmax){
+          if(nodetect_count > nodetect_countmax - straight_up * 5){
             state = END;
           } 
         }
