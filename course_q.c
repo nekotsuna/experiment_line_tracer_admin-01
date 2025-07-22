@@ -27,11 +27,14 @@ void main() {
         if(output[3] == 1 || output[4] == 1){
 	 motor_drive(pfd,16,15);
         }
-        else if(output[1] == 1 || output[0] == 1){
+        else if(output[0] == 1 || output[1] == 1){
 	 motor_drive(pfd,15,16);
         }
-        else if(output[1] == 0 && output[2] == 0 && output[3] == 0 || output[2] == 1){
+	else if(output[2] == 1){
 	 motor_drive(pfd,16,16);
+	}
+        else if(output[1] == 0 && output[2] == 0 && output[3] == 0){
+	 motor_drive(pfd,11,11);
         }
 
 	if(output[0] == 0 && output[1] == 0 && output[2] == 0 && output[3] == 0 && output[4] == 0){
