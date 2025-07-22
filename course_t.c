@@ -63,7 +63,7 @@ int main() {
   start(pfd);
   printf("out start\n");
 
-  for(int i = 0; i < 100; i++){
+  /*for(int i = 0; i < 100; i++){
     straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
     printf("out straight\n");
 
@@ -77,6 +77,46 @@ int main() {
       printf("goal\n");
       stop(pfd, 2);
     }
+
+    uturn(pfd, settings[UTURN_SM], settings[UTURN_WM], sec);
+    printf("out u-turn\n");
+  }*/
+
+  for(int i = 0; i < 100; i++){
+    straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
+    printf("out straight\n");
+
+    curve(pfd, settings[CURVE_SM], settings[CURVE_WM], settings[CURVE_STRM], sec, settings[CURVE_STR_SEC] / settings[SEC], settings[CURVE_INIT_SEC] / settings[SEC]); //first curve
+    printf("out curve\n");
+
+    straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
+    printf("out straight\n");
+
+    uturn(pfd, settings[UTURN_SM], settings[UTURN_WM], sec);
+    printf("out u-turn\n");
+
+    straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
+    printf("out straight\n");
+
+    uturn(pfd, settings[UTURN_SM], settings[UTURN_WM], sec);
+    printf("out u-turn\n");
+
+    straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, ONCROSS, 0);
+    printf("out straight\n");
+
+    curve(pfd, settings[CURVE_WM], settings[CURVE_SM], settings[CURVE_STRM], sec, settings[CURVE_STR_SEC] / settings[SEC], settings[CURVE_INIT_SEC] / settings[SEC]); //second curve
+    printf("out curve\n");
+
+    straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
+    printf("out straight\n");
+
+    uturn(pfd, settings[UTURN_SM], settings[UTURN_WM], sec);
+    printf("out u-turn\n");
+
+    straight_v2(pfd, settings[STRAIGHT], settings[BENDING_SM], settings[BENDING_WM], settings[BENDING_STSM], settings[BENDING_STWM], sec, NODETECT, settings[UTURN_SEC] / settings[SEC]);
+    printf("out straight\n");
+
+    printf("goal\n");
 
     uturn(pfd, settings[UTURN_SM], settings[UTURN_WM], sec);
     printf("out u-turn\n");
